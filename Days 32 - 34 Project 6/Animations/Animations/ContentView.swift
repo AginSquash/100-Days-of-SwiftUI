@@ -31,6 +31,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            /*
             Button("Tap Me") {
                 withAnimation {
                     self.isShowingRed.toggle()
@@ -42,6 +43,14 @@ struct ContentView: View {
                         .frame(width: 200, height: 200)
                         .transition(.pivot)
             }
+ */
+            
+            Rectangle()
+                .frame(width: 50, height: 50, alignment: .center)
+            .padding()
+                .background(Color.red)
+            .padding()
+                .background(Color.blue)
         }
     }
 }
