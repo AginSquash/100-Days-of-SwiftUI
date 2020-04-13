@@ -16,6 +16,7 @@ struct AddView: View {
     @ObservedObject var expenses: Expenses
     
     @Environment(\.presentationMode) var presentationMode
+    @State private var isIncrorrectInput = false
     
     static let types = ["Business", "Personal"]
     
@@ -44,8 +45,12 @@ struct AddView: View {
                             UserDefaults.standard.set(encoded, forKey: "Items")
                     }
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.isIncrorrectInput = true
                 }
             })
+        }.alert(isPresented: $isIncrorrectInput) {
+            Alert(title: Text("Incorrect input!"), message: Text("Amount cannot be a string"), dismissButton: .default(Text("Ok"), action: { self.amount = "" }))
         }
     }
 }

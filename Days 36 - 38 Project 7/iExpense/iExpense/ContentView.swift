@@ -19,7 +19,7 @@ class Expenses: ObservableObject {
     private static let itemsKey = "Items"
     
     @Published var items: [ExpenseItem] {
-        didSet {
+        didSet { // This doesn't work due to a bug in swift 5.2 https://bugs.swift.org/browse/SR-12089
             let encoder = JSONEncoder()
 
             if let encoded = try? encoder.encode(items) {
@@ -37,7 +37,6 @@ class Expenses: ObservableObject {
                 return
             }
         }
-
         self.items = []
     }
 }
@@ -59,17 +58,30 @@ struct ContentView: View {
 
                         Spacer()
                         Text("$\(item.amount)")
+                            .foregroundColor( Self.getColor(amount: item.amount) )
                     }
                 }
             .onDelete(perform: removeItems)
             }
         .navigationBarTitle("iExpense")
-        .navigationBarItems(trailing:
+        .navigationBarItems(leading: EditButton(), trailing:
             Button(action: {
                 self.showingAddExpense = true
-            }, label: { Image(systemName: "plus") }))
+            }, label: { Text("Add") }))
+           
         }
         .sheet(isPresented: $showingAddExpense, content: { AddView(expenses: self.expenses) })
+    }
+    
+    static func getColor(amount: Int) -> Color
+    {
+        if (amount > 100) {
+            return Color.red
+        }
+        if amount > 10 {
+            return Color.yellow
+        }
+        return Color.green
     }
     
     func removeItems(at offsests: IndexSet) {
