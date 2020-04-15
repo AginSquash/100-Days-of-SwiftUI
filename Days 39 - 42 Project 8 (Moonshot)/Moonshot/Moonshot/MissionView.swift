@@ -38,8 +38,11 @@ struct MissionView: View {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(self.astronauts, id:\.role) { crewMember in
+                                NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                                     AstronautPreview(member: crewMember)
                                 }
+                                .buttonStyle(PlainButtonStyle())
+                            }
                         }
                     }
                     Spacer(minLength: 25)

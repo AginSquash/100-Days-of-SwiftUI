@@ -23,6 +23,7 @@ struct AstronautPreview: View {
             
             Text(member.astronaut.name)
                 .font(.headline)
+                .multilineTextAlignment(.center)
                 .frame(width: 150, alignment: .center)
             Text(member.role)
                 .multilineTextAlignment(.center)
