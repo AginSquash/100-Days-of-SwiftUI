@@ -42,12 +42,23 @@ struct AstronautView: View {
                     .padding()
                     .layoutPriority(1)
                     
+                    Spacer(minLength: 35)
                     HStack {
-                        ForEach(self.missonsInCrew) { mission in
-                            MissionPreview(id: mission.id ,role: mission.role, Date: mission.LaunchDate)
-                        }
+                        Text("Missions in crew:")
+                            .font(.title)
+                            .padding(.horizontal)
+                        Spacer()
                     }
-                .padding()
+                    
+                    ScrollView (.horizontal) {
+                        HStack {
+                            ForEach(self.missonsInCrew) { mission in
+                                MissionPreview(id: mission.id ,role: mission.role, Date: mission.LaunchDate)
+                            }
+                            
+                        }
+                        .padding()
+                    }
                 }
             }
         }
