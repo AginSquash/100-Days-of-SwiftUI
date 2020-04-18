@@ -9,7 +9,6 @@
 import SwiftUI
 
 
-
 struct ContentView: View {
     let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
@@ -19,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Toggle(isOn: $sortByName) {
+                Toggle(isOn: $sortByName.animation()) {
                     Text("Sort by name")
                         .font(.headline)
                 }
