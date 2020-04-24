@@ -39,11 +39,16 @@ struct DetailView: View {
                     .foregroundColor(.secondary)
 
                 Text(self.book.review ?? "No review")
-                    .padding()
 
+                HStack {
+                    Spacer()
+                    Text(self.getParsedTime())
+                    .padding()
+                }
+                
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
-
+                
                 Spacer()
             }
         }
@@ -54,6 +59,16 @@ struct DetailView: View {
         .navigationBarItems(trailing: Button(action: { self.showingDeleteAlert = true },
                                             label: { Image(systemName: "trash") }
         ) )
+    }
+    
+    func getParsedTime() -> String {
+        let formater = DateFormatter()
+        formater.dateStyle = .medium
+        
+        guard self.book.date != nil else {
+            fatalError("self.book.date is nil")
+        }
+        return formater.string(from: self.book.date ?? Date() )
     }
     
     func deleteBook()
@@ -74,7 +89,8 @@ struct DetailView_Previews: PreviewProvider {
                book.genre = "Fantasy"
                book.rating = 4
                book.review = "This was a great book; I really enjoyed it."
-
+               book.date = Date()
+        
                return NavigationView {
                    DetailView(book: book)
                }
