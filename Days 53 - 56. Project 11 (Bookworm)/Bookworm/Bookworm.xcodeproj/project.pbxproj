@@ -14,6 +14,10 @@
 		CD2769972451008500339212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2769962451008500339212 /* Assets.xcassets */; };
 		CD27699A2451008500339212 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2769992451008500339212 /* Preview Assets.xcassets */; };
 		CD27699D2451008500339212 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD27699B2451008500339212 /* LaunchScreen.storyboard */; };
+		CD445F1424535E5B0022E847 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD445F1324535E5B0022E847 /* AddBookView.swift */; };
+		CD445F16245368A70022E847 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD445F15245368A70022E847 /* RatingView.swift */; };
+		CD445F1824537C3D0022E847 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD445F1724537C3D0022E847 /* EmojiRatingView.swift */; };
+		CD445F1A245382EE0022E847 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD445F19245382EE0022E847 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		CD2769992451008500339212 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD27699C2451008500339212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD27699E2451008500339212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD445F1324535E5B0022E847 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		CD445F15245368A70022E847 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		CD445F1724537C3D0022E847 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		CD445F19245382EE0022E847 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +69,14 @@
 				CD27698D2451008400339212 /* AppDelegate.swift */,
 				CD27698F2451008400339212 /* SceneDelegate.swift */,
 				CD2769942451008400339212 /* ContentView.swift */,
+				CD445F19245382EE0022E847 /* DetailView.swift */,
+				CD445F1724537C3D0022E847 /* EmojiRatingView.swift */,
 				CD2769962451008500339212 /* Assets.xcassets */,
 				CD27699B2451008500339212 /* LaunchScreen.storyboard */,
 				CD27699E2451008500339212 /* Info.plist */,
 				CD2769912451008400339212 /* Bookworm.xcdatamodeld */,
+				CD445F1324535E5B0022E847 /* AddBookView.swift */,
+				CD445F15245368A70022E847 /* RatingView.swift */,
 				CD2769982451008500339212 /* Preview Content */,
 			);
 			path = Bookworm;
@@ -150,9 +162,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD27698E2451008400339212 /* AppDelegate.swift in Sources */,
+				CD445F1A245382EE0022E847 /* DetailView.swift in Sources */,
 				CD2769932451008400339212 /* Bookworm.xcdatamodeld in Sources */,
+				CD445F1824537C3D0022E847 /* EmojiRatingView.swift in Sources */,
 				CD2769952451008400339212 /* ContentView.swift in Sources */,
+				CD445F16245368A70022E847 /* RatingView.swift in Sources */,
 				CD2769902451008400339212 /* SceneDelegate.swift in Sources */,
+				CD445F1424535E5B0022E847 /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +309,7 @@
 				DEVELOPMENT_TEAM = Z7788V56C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Bookworm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +330,7 @@
 				DEVELOPMENT_TEAM = Z7788V56C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Bookworm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
