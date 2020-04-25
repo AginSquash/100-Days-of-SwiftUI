@@ -14,10 +14,8 @@ struct ContentView: View {
     var body: some View {
         List {
             ForEach(users) { user in
-                HStack {
-                    Text(user.name)
-                    Text(user.wrappedRegisterDate)
-                }
+                UserPreview(user: user)
+                    .padding()
             }
         }
     .onAppear(perform: loadData)

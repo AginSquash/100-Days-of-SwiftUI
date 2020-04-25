@@ -16,6 +16,8 @@
 		CD6D46A82454DDCF00EBEFFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6D46A62454DDCF00EBEFFB /* LaunchScreen.storyboard */; };
 		CD6D46B02454DE1C00EBEFFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6D46AF2454DE1C00EBEFFB /* User.swift */; };
 		CD6D46B22454DEE200EBEFFB /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6D46B12454DEE200EBEFFB /* Friend.swift */; };
+		CD6D46B42454E5C800EBEFFB /* UserPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6D46B32454E5C800EBEFFB /* UserPreview.swift */; };
+		CD6D46B62454E94600EBEFFB /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6D46B52454E94600EBEFFB /* UserDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		CD6D46A92454DDCF00EBEFFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6D46AF2454DE1C00EBEFFB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CD6D46B12454DEE200EBEFFB /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		CD6D46B32454E5C800EBEFFB /* UserPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreview.swift; sourceTree = "<group>"; };
+		CD6D46B52454E94600EBEFFB /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				CD6D46982454DDCF00EBEFFB /* AppDelegate.swift */,
 				CD6D469A2454DDCF00EBEFFB /* SceneDelegate.swift */,
 				CD6D469F2454DDCF00EBEFFB /* ContentView.swift */,
+				CD6D46B52454E94600EBEFFB /* UserDetail.swift */,
+				CD6D46B32454E5C800EBEFFB /* UserPreview.swift */,
 				CD6D46A12454DDCF00EBEFFB /* Assets.xcassets */,
 				CD6D46A62454DDCF00EBEFFB /* LaunchScreen.storyboard */,
 				CD6D46A92454DDCF00EBEFFB /* Info.plist */,
@@ -156,9 +162,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6D46992454DDCF00EBEFFB /* AppDelegate.swift in Sources */,
+				CD6D46B42454E5C800EBEFFB /* UserPreview.swift in Sources */,
 				CD6D469E2454DDCF00EBEFFB /* UserAndFriend.xcdatamodeld in Sources */,
 				CD6D46A02454DDCF00EBEFFB /* ContentView.swift in Sources */,
 				CD6D46B22454DEE200EBEFFB /* Friend.swift in Sources */,
+				CD6D46B62454E94600EBEFFB /* UserDetail.swift in Sources */,
 				CD6D46B02454DE1C00EBEFFB /* User.swift in Sources */,
 				CD6D469B2454DDCF00EBEFFB /* SceneDelegate.swift in Sources */,
 			);
