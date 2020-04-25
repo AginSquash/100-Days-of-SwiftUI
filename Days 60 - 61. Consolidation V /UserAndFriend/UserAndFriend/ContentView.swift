@@ -9,14 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var users = [User]()
+    @EnvironmentObject var usersAll: Users
     
     var body: some View {
-        List {
-            ForEach(users) { user in
-                UserPreview(user: user)
-                    .padding()
+        NavigationView {
+            List {
+                ForEach(usersAll.users) { user in
+                    NavigationLink(destination: UserDetail(user: user) ) {
+                        UserPreview(user: user)
+                            .padding()
+                    }
+                }
             }
+            .navigationBarTitle("Friends")
         }
     .onAppear(perform: loadData)
     }
@@ -28,7 +33,7 @@ struct ContentView: View {
             if let data = data {
                 if let decoded = try? JSONDecoder().decode([User].self, from: data) {
                     DispatchQueue.main.async {
-                        self.users = decoded
+                        self.usersAll.users = decoded
                     }
                     return
                 }
@@ -40,6 +45,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let users = Users()
+        return ContentView().environmentObject(users)
     }
 }

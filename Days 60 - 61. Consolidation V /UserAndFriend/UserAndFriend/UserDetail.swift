@@ -9,21 +9,66 @@
 import SwiftUI
 
 struct UserDetail: View {
+    @EnvironmentObject var usersAll: Users
     let user: User
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading) {
-                Spacer(minLength: 25)
+        Form {
+            Section(header: Text("Name"))
+            {
                 UserPreview(user: user)
-                Text("Age: \(user.age)")
-                Text("Working in: \(user.company)")
-                Text("About: \(user.about)")
             }
+            Section(header: Text("Info")) {
+                HStack {
+                    Text("Age:")
+                        .fontWeight(.bold)
+                    Text("\(user.age)")
+                }
+                HStack {
+                    Text("Working in:")
+                        .fontWeight(.bold)
+                    Text("\(user.company)")
+                }
+                VStack(alignment: .leading) {
+                    Text("About:")
+                        .fontWeight(.bold)
+                    Text("\(user.about)")
+                }
+                HStack {
+                    Text("Registred:")
+                        .fontWeight(.bold)
+                    Text("\(user.wrappedRegisterDate)")
+                }
+            }
+            Section(header: Text("Contact")) {
+                Text(user.email)
+                Text(user.address)
+            }
+            
+            Section(header: Text("Friends")) {
+                ForEach(user.friends) { friend in
+                    self.getFriendView(id: friend.id)
+                }
+            }
+            
+            Section(header: Text("Tags")) {
+                ForEach(user.tags, id: \.self) { tag in
+                    Text(tag)
+                }
+            }
+            
         }
-        .padding()
+        .navigationBarTitle(Text("User"), displayMode: .inline)
         .frame( maxWidth: .infinity)
     }
+    func getFriendView(id: UUID) -> some View {
+        if let user = self.usersAll.users.first(where: { $0.id == id }) {
+            return NavigationLink(destination: UserDetail(user: user), label: { UserPreview(user: user) })
+        } else {
+            fatalError("Id fake")
+        }
+    }
+    
 }
 
 struct UserDetail_Previews: PreviewProvider {

@@ -8,6 +8,10 @@
 
 import Foundation
 
+class Users: ObservableObject {
+    @Published var users = [User]()
+}
+
 struct User: Codable, Identifiable {
 
     let id: UUID
