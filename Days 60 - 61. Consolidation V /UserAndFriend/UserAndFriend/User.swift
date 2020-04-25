@@ -9,10 +9,10 @@
 import Foundation
 
 class Users: ObservableObject {
-    @Published var users = [User]()
+    @Published var users = [UserStruct]()
 }
 
-struct User: Codable, Identifiable {
+struct UserStruct: Codable, Identifiable {
 
     let id: UUID
     let isActive: Bool
@@ -35,5 +35,5 @@ struct User: Codable, Identifiable {
         return dateFormatter.string(from: date)
     }
     
-    let friends: [Friend]
+    let friends: [FriendStruct]
 }
