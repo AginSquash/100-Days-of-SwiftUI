@@ -51,7 +51,7 @@ struct ContentView: View {
                                 set.adding(friend)
                             }
                             newUser.friend = set
-                            self.moc.hasChanges {
+                            if self.moc.hasChanges {
                                 try? self.moc.save()
                             }
                         }
