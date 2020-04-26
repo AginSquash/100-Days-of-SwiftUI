@@ -10,7 +10,9 @@ import SwiftUI
 
 struct UserDetail: View {
     @EnvironmentObject var usersAll: Users
-    let user: UserStruct
+    @FetchRequest(entity: User.entity(), sortDescriptors: [ NSSortDescriptor(keyPath: \User.name, ascending: true) ]) var users: FetchedResults<User>
+    
+    let user: User
     
     var body: some View {
         Form {
@@ -45,24 +47,25 @@ struct UserDetail: View {
                 Text(user.address)
             }
             
+            
             Section(header: Text("Friends")) {
-                ForEach(user.friends) { friend in
+                ForEach(user.friends, id: \.self) { friend in
                     self.getFriendView(id: friend.id)
                 }
             }
-            
-            Section(header: Text("Tags")) {
+            /*
+             Section(header: Text("Tags")) {
                 ForEach(user.tags, id: \.self) { tag in
                     Text(tag)
                 }
-            }
+            } */
             
         }
         .navigationBarTitle(Text("User"), displayMode: .inline)
         .frame( maxWidth: .infinity)
     }
     func getFriendView(id: UUID) -> some View {
-        if let user = self.usersAll.users.first(where: { $0.id == id }) {
+        if let user = self.users.first(where: { $0.id == id }) {
             return NavigationLink(destination: UserDetail(user: user), label: { UserPreview(user: user) })
         } else {
             fatalError("Id fake")
@@ -70,7 +73,8 @@ struct UserDetail: View {
     }
     
 }
-
+//self.usersAll.users.first(where: { $0.id == id })
+/*
 struct UserDetail_Previews: PreviewProvider {
     static var previews: some View {
         let about = "Laboris ut dolore ullamco officia mollit reprehenderit qui eiusmod anim cillum qui ipsum esse reprehenderit. Deserunt quis consequat ut ex officia aliqua nostrud fugiat Lorem voluptate sunt consequat. Sint exercitation Lorem irure aliquip duis eiusmod enim. Excepteur non deserunt id eiusmod quis ipsum et consequat proident nulla cupidatat tempor aute. Aliquip amet in ut ad ullamco. Eiusmod anim anim officia magna qui exercitation incididunt eu eiusmod irure officia aute enim.\r\n"
@@ -78,3 +82,4 @@ struct UserDetail_Previews: PreviewProvider {
         return UserDetail(user: UserStruct(id: UUID(), isActive: true, name: "Alford Rodriguez", age: 21, company: "Gazprom", email: "email@example.com", address: "907 Nelson Street, Cotopaxi, South Dakota, 5913", about: about, tags: ["cillum","consequat"], registered: "date", friends: [FriendStruct(id: UUID(), name: "Pauline Dawson") ]))
     }
 }
+*/

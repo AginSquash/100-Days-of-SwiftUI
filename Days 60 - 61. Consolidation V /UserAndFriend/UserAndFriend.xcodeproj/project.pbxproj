@@ -21,7 +21,7 @@
 		CD780EE1245502640044E1A0 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD780EDD245502640044E1A0 /* User+CoreDataClass.swift */; };
 		CD780EE2245502640044E1A0 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD780EDE245502640044E1A0 /* User+CoreDataProperties.swift */; };
 		CD780EE3245502640044E1A0 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD780EDF245502640044E1A0 /* Friend+CoreDataClass.swift */; };
-		CD780EE4245502640044E1A0 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD780EE0245502640044E1A0 /* Friend+CoreDataProperties.swift */; };
+		CD780EEA2455174D0044E1A0 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD780EE92455174D0044E1A0 /* Friend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		CD780EDD245502640044E1A0 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD780EDE245502640044E1A0 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD780EDF245502640044E1A0 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CD780EE0245502640044E1A0 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD780EE92455174D0044E1A0 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +102,10 @@
 		CD6D46C12454FDB300EBEFFB /* CoreData_Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD780EE92455174D0044E1A0 /* Friend+CoreDataProperties.swift */,
 				CD780EDD245502640044E1A0 /* User+CoreDataClass.swift */,
 				CD780EDE245502640044E1A0 /* User+CoreDataProperties.swift */,
 				CD780EDF245502640044E1A0 /* Friend+CoreDataClass.swift */,
-				CD780EE0245502640044E1A0 /* Friend+CoreDataProperties.swift */,
 			);
 			path = CoreData_Files;
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 				CD6D469E2454DDCF00EBEFFB /* UserAndFriend.xcdatamodeld in Sources */,
 				CD780EE3245502640044E1A0 /* Friend+CoreDataClass.swift in Sources */,
 				CD6D46A02454DDCF00EBEFFB /* ContentView.swift in Sources */,
-				CD780EE4245502640044E1A0 /* Friend+CoreDataProperties.swift in Sources */,
+				CD780EEA2455174D0044E1A0 /* Friend+CoreDataProperties.swift in Sources */,
 				CD6D46B22454DEE200EBEFFB /* Friend.swift in Sources */,
 				CD780EE1245502640044E1A0 /* User+CoreDataClass.swift in Sources */,
 				CD6D46B62454E94600EBEFFB /* UserDetail.swift in Sources */,

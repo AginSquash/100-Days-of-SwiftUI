@@ -12,11 +12,12 @@ struct ContentView: View {
     @EnvironmentObject var usersAll: Users
     
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: User.entity(), sortDescriptors: [ NSSortDescriptor(keyPath: \User.name, ascending: true) ]) var users: FetchedResults<User>
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(usersAll.users) { user in
+                ForEach( users, id: \.self ) { user in
                     NavigationLink(destination: UserDetail(user: user) ) {
                         UserPreview(user: user)
                             .padding()
@@ -25,6 +26,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("Friends")
         }
+    //TODO Not rewrite data!
     .onAppear(perform: loadData)
     }
     
@@ -36,6 +38,9 @@ struct ContentView: View {
                 if let decoded = try? JSONDecoder().decode([UserStruct].self, from: data) {
                     DispatchQueue.main.async {
                         for user in decoded {
+                            if let _ = self.users.first(where: { $0.id == user.id } ) {
+                                break
+                            }
                             let newUser = User(context: self.moc)
                             newUser.id = user.id
                             newUser.name = user.name
@@ -46,16 +51,20 @@ struct ContentView: View {
                             newUser.registered = user.registered
                             newUser.email = user.email
                             newUser.company = user.company
-                            let set = NSSet()
-                            for friend in user.friends {
-                                set.adding(friend)
+                            
+                            for friend in user.friends
+                            {
+                                let newFriend = Friend(context: self.moc)
+                                newFriend.id = friend.id
+                                newFriend.name = friend.name
+                                newFriend.user = newUser
                             }
-                            newUser.friend = set
+                            print("\(newUser.name): \(newUser.friend.count)")
                             if self.moc.hasChanges {
                                 try? self.moc.save()
                             }
                         }
-                        self.usersAll.users = decoded
+                        //self.usersAll.users = decoded
                     }
                     return
                 }

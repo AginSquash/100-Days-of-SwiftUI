@@ -27,6 +27,27 @@ extension User {
     @NSManaged public var email: String
     @NSManaged public var company: String
     @NSManaged public var friend: NSSet
+    
+    var wrappedRegisterDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from: registered) ?? Date()
+        dateFormatter.dateStyle = .long
+        return dateFormatter.string(from: date)
+    }
+    
+    public var friends: [Friend] {
+        let set = friend as? Set<Friend> ?? []
+        guard !set.isEmpty else {
+            print("Set empety! (\(friend.count))")
+            return []
+        }
+        print("friend.count: \(friend.count)")
+        let newSet = set.sorted { $0.name < $1.name }
+        print("newSet.count: \(newSet.count)")
+        return newSet
+    }
 
 }
 
