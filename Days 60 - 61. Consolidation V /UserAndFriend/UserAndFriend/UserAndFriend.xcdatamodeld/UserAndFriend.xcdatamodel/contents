@@ -32,8 +32,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Friend" positionX="36" positionY="135" width="128" height="88"/>
-        <element name="Tags" positionX="9" positionY="99" width="128" height="148"/>
-        <element name="User" positionX="-18" positionY="27" width="128" height="193"/>
+        <element name="Friend" positionX="8.03515625" positionY="60.98828125" width="128" height="88"/>
+        <element name="Tags" positionX="-139.84375" positionY="-155.28515625" width="128" height="148"/>
+        <element name="User" positionX="-414.265625" positionY="25.97265625" width="128" height="193"/>
     </elements>
 </model>

@@ -52,6 +52,7 @@ struct ContentView: View {
                             newUser.email = user.email
                             newUser.company = user.company
                             
+                            
                             for friend in user.friends
                             {
                                 let newFriend = Friend(context: self.moc)
@@ -59,6 +60,7 @@ struct ContentView: View {
                                 newFriend.name = friend.name
                                 newFriend.user = newUser
                             }
+                            
                             print("\(newUser.name): \(newUser.friend.count)")
                             if self.moc.hasChanges {
                                 try? self.moc.save()
