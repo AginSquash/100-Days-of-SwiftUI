@@ -27,8 +27,10 @@ struct UserPreview_Previews: PreviewProvider {
     
     static var previews: some View {
          let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let user = try! managedObjectContext.fetch(request).first as! User
+        let user = User(context: managedObjectContext)
+        user.id = UUID()
+        user.isActive = true
+        user.name = "Test Name"
         return UserPreview(user: user)
             .previewLayout(.fixed(width: 400, height: 50))
     }

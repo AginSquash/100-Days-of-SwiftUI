@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    @EnvironmentObject var usersAll: Users
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: User.entity(), sortDescriptors: [ NSSortDescriptor(keyPath: \User.name, ascending: true) ]) var users: FetchedResults<User>
@@ -74,11 +74,13 @@ struct ContentView: View {
             print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let users = Users()
-        return ContentView().environmentObject(users)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return ContentView().environment(\.managedObjectContext, context)
     }
 }

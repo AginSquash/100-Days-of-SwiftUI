@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct UserDetail: View {
-    @EnvironmentObject var usersAll: Users
+    //@EnvironmentObject var usersAll: Users
     @FetchRequest(entity: User.entity(), sortDescriptors: [ NSSortDescriptor(keyPath: \User.name, ascending: true) ]) var users: FetchedResults<User>
     
     let user: User
@@ -53,6 +53,7 @@ struct UserDetail: View {
                     self.getFriendView(id: friend.id)
                 }
             }
+ 
             /*
              Section(header: Text("Tags")) {
                 ForEach(user.tags, id: \.self) { tag in
@@ -73,13 +74,27 @@ struct UserDetail: View {
     }
     
 }
-//self.usersAll.users.first(where: { $0.id == id })
-/*
+
+
 struct UserDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let about = "Laboris ut dolore ullamco officia mollit reprehenderit qui eiusmod anim cillum qui ipsum esse reprehenderit. Deserunt quis consequat ut ex officia aliqua nostrud fugiat Lorem voluptate sunt consequat. Sint exercitation Lorem irure aliquip duis eiusmod enim. Excepteur non deserunt id eiusmod quis ipsum et consequat proident nulla cupidatat tempor aute. Aliquip amet in ut ad ullamco. Eiusmod anim anim officia magna qui exercitation incididunt eu eiusmod irure officia aute enim.\r\n"
-        
-        return UserDetail(user: UserStruct(id: UUID(), isActive: true, name: "Alford Rodriguez", age: 21, company: "Gazprom", email: "email@example.com", address: "907 Nelson Street, Cotopaxi, South Dakota, 5913", about: about, tags: ["cillum","consequat"], registered: "date", friends: [FriendStruct(id: UUID(), name: "Pauline Dawson") ]))
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let user = User(context: moc)
+        user.id = UUID()
+        user.isActive = true
+        user.name = "Alford Rodriguez"
+        user.about = "Laboris ut dolore ullamco officia mollit reprehenderit qui eiusmod anim cillum qui ipsum esse reprehenderit. Deserunt quis consequat ut ex officia aliqua nostrud fugiat Lorem voluptate sunt consequat. Sint exercitation Lorem irure aliquip duis eiusmod enim. Excepteur non deserunt id eiusmod quis ipsum et consequat proident nulla cupidatat tempor aute. Aliquip amet in ut ad ullamco. Eiusmod anim anim officia magna qui exercitation incididunt eu eiusmod irure officia aute enim.\r\n"
+        user.age = 21
+        user.company = "Gazprom"
+        user.email = "email@example.com"
+        user.address = "907 Nelson Street"
+        user.registered = "2015-11-10T01:47:18-00:00"
+        let friend = Friend(context: moc)
+        friend.id = UUID(uuidString: "91b5be3d-9a19-4ac2-b2ce-89cc41884ed0") ?? UUID()
+        friend.name = "Hawkins Patel"
+        friend.user = user
+
+        return UserDetail(user: user)
     }
 }
-*/
+
