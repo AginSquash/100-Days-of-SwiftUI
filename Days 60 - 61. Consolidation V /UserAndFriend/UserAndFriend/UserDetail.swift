@@ -94,6 +94,8 @@ struct UserDetail_Previews: PreviewProvider {
         friend.name = "Hawkins Patel"
         friend.user = user
 
+        // Cannot preview this file = UserAndFriend.app may have crashed
+        // Why????
         return UserDetail(user: user)
     }
 }
