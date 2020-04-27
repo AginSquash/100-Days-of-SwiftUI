@@ -37,9 +37,20 @@ struct ContentView: View {
             set: { self.filterRadius = $0
                 self.applyProcessing() })
         
+        let filterName = Binding<String> (
+            get: { self.currentFilterName },
+            set: {
+                let newName = $0
+                withAnimation() {
+                self.currentFilterName = newName} })
+        
        return NavigationView {
             VStack {
-                Text("Filter Choosen: \(self.currentFilterName)")
+                HStack {
+                    Text("Filter Choosen:")
+                    Text(self.currentFilterName)
+                        .animation(.default)
+                }
                 ZStack {
                     Rectangle()
                         .fill(Color.secondary)
@@ -58,11 +69,14 @@ struct ContentView: View {
                 .onTapGesture {
                     self.showImagePicker = true
                 }
-            HStack {
-                Text("Intensity")
-                Slider(value: intensity, in: 0.01...1)
+            if self.currentFilterName != "Gaussian Blur" {
+                HStack {
+                    Text("Intensity")
+                    Slider(value: intensity, in: 0.01...1)
+                }
+                .transition(.slide)
             }
-            if self.currentFilterName == "Unsharp Mask" {
+            if self.currentFilterName == "Unsharp Mask" || self.currentFilterName == "Gaussian Blur" {
                     HStack {
                         Text("Raduis")
                         Slider(value: radius, in: 0.01...1)
@@ -105,31 +119,32 @@ struct ContentView: View {
             ActionSheet(title: Text("Select a filter"), buttons: [
                 .default(Text("Crystallize")) {
                     self.setFilter(CIFilter.crystallize())
-                    self.currentFilterName = "Crystallize"
+                    filterName.wrappedValue = "Crystallize"
                 },
                 .default(Text("Edges")) {
                     self.setFilter(CIFilter.edges())
-                    self.currentFilterName = "Edges"
+                    filterName.wrappedValue = "Edges"
                 },
                 .default(Text("Gaussian Blur")) {
                     self.setFilter(CIFilter.gaussianBlur())
-                    self.currentFilterName = "Gaussian Blur"
+                    filterName.wrappedValue = "Gaussian Blur"
                 },
                 .default(Text("Pixellate")) {
                     self.setFilter(CIFilter.pixellate())
-                    self.currentFilterName = "Pixellate"
+                    filterName.wrappedValue = "Pixellate"
                 },
                 .default(Text("Sepia Tone")) {
                     self.setFilter(CIFilter.sepiaTone())
-                    self.currentFilterName = "Sepia Tone"
+                    filterName.wrappedValue = "Sepia Tone"
                 },
                 .default(Text("Unsharp Mask")) {
                     self.setFilter(CIFilter.unsharpMask())
-                    self.currentFilterName = "Unsharp Mask"
+                    filterName.wrappedValue = "Unsharp Mask"
+                    
                 },
                 .default(Text("Vignette")) {
                     self.setFilter(CIFilter.vignette())
-                    self.currentFilterName = "Vignette"
+                    filterName.wrappedValue = "Vignette"
                 },
                 .cancel()
             ])
