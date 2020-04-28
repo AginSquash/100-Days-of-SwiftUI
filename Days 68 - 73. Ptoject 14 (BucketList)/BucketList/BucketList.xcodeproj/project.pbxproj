@@ -14,6 +14,7 @@
 		CD07F6DF2458AC7200EF2E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD07F6DE2458AC7200EF2E1E /* Assets.xcassets */; };
 		CD07F6E22458AC7200EF2E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD07F6E12458AC7200EF2E1E /* Preview Assets.xcassets */; };
 		CD07F6E52458AC7200EF2E1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD07F6E32458AC7200EF2E1E /* LaunchScreen.storyboard */; };
+		CD07F6ED2458CA6700EF2E1E /* Bundle-FileWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07F6EC2458CA6700EF2E1E /* Bundle-FileWork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD07F6E12458AC7200EF2E1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD07F6E42458AC7200EF2E1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD07F6E62458AC7200EF2E1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD07F6EC2458CA6700EF2E1E /* Bundle-FileWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-FileWork.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		CD07F6D42458AC7100EF2E1E /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				CD07F6EC2458CA6700EF2E1E /* Bundle-FileWork.swift */,
 				CD07F6D52458AC7100EF2E1E /* AppDelegate.swift */,
 				CD07F6D72458AC7100EF2E1E /* SceneDelegate.swift */,
 				CD07F6DC2458AC7100EF2E1E /* ContentView.swift */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD07F6ED2458CA6700EF2E1E /* Bundle-FileWork.swift in Sources */,
 				CD07F6D62458AC7100EF2E1E /* AppDelegate.swift in Sources */,
 				CD07F6DB2458AC7100EF2E1E /* BucketList.xcdatamodeld in Sources */,
 				CD07F6DD2458AC7100EF2E1E /* ContentView.swift in Sources */,
