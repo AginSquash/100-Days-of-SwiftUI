@@ -69,14 +69,14 @@ struct ContentView: View {
                 .onTapGesture {
                     self.showImagePicker = true
                 }
-            if self.currentFilterName != "Gaussian Blur" {
+            if self.currentFilterName != "Gaussian Blur" && self.currentFilterName != "Crystallize" {
                 HStack {
                     Text("Intensity")
                     Slider(value: intensity, in: 0.01...1)
                 }
                 .transition(.slide)
             }
-            if self.currentFilterName == "Unsharp Mask" || self.currentFilterName == "Gaussian Blur" {
+            if self.currentFilterName == "Unsharp Mask" || self.currentFilterName == "Gaussian Blur" || self.currentFilterName == "Crystallize" {
                     HStack {
                         Text("Raduis")
                         Slider(value: radius, in: 0.01...1)
