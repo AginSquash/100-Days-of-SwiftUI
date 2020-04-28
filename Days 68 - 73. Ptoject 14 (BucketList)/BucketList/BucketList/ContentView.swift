@@ -26,33 +26,42 @@ func getDocumentsDirectory() -> URL {
     return paths[0]
 }
 
+enum LoadingState {
+    case loading, success, failed
+}
+
+// View
+struct LoadingView: View {
+    var body: some View {
+        Text("Loading...")
+    }
+}
+
+struct SuccessView: View {
+    var body: some View {
+        Text("Success!")
+    }
+}
+
+struct FailedView: View {
+    var body: some View {
+        Text("Failed.")
+    }
+}
+// views end
+
 struct ContentView: View {
-    
-    let users = [
-        User(firstName: "Arnold", lastName: "Rimmer"),
-        User(firstName: "Kristine", lastName: "Kochanski"),
-        User(firstName: "David", lastName: "Lister"),
-    ].sorted()
-     
-    let users2: [User] = Bundle.main.readCustomData(file: "user2.txt")!
+    var loadingState = LoadingState.success
     
     var body: some View {
-        Text("Hello world")
-            .onTapGesture {
-                
-               Bundle.main.writeCustomData(data: self.users, file: "user2.txt")
-                
-                let str = "my String"
-                let url = getDocumentsDirectory().appendingPathComponent("message.txt")
-                
-                do {
-                    try str.write(to: url, atomically: true, encoding: .utf8)
-                    let input = try String(contentsOf: url)
-                    print(input)
-                }
-                catch {
-                    print(error.localizedDescription)
-                }
+        Group {
+            if loadingState == .loading {
+                LoadingView()
+            } else if loadingState == .success {
+                SuccessView()
+            } else if loadingState == .failed {
+                FailedView()
+            }
         }
     }
 }

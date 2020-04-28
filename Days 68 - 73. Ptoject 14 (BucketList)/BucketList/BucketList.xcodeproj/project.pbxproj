@@ -15,6 +15,7 @@
 		CD07F6E22458AC7200EF2E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD07F6E12458AC7200EF2E1E /* Preview Assets.xcassets */; };
 		CD07F6E52458AC7200EF2E1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD07F6E32458AC7200EF2E1E /* LaunchScreen.storyboard */; };
 		CD07F6ED2458CA6700EF2E1E /* Bundle-FileWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07F6EC2458CA6700EF2E1E /* Bundle-FileWork.swift */; };
+		CD07F6EF2458D2DA00EF2E1E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07F6EE2458D2DA00EF2E1E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CD07F6E42458AC7200EF2E1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD07F6E62458AC7200EF2E1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD07F6EC2458CA6700EF2E1E /* Bundle-FileWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-FileWork.swift"; sourceTree = "<group>"; };
+		CD07F6EE2458D2DA00EF2E1E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				CD07F6D52458AC7100EF2E1E /* AppDelegate.swift */,
 				CD07F6D72458AC7100EF2E1E /* SceneDelegate.swift */,
 				CD07F6DC2458AC7100EF2E1E /* ContentView.swift */,
+				CD07F6EE2458D2DA00EF2E1E /* MapView.swift */,
 				CD07F6DE2458AC7200EF2E1E /* Assets.xcassets */,
 				CD07F6E32458AC7200EF2E1E /* LaunchScreen.storyboard */,
 				CD07F6E62458AC7200EF2E1E /* Info.plist */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD07F6ED2458CA6700EF2E1E /* Bundle-FileWork.swift in Sources */,
+				CD07F6EF2458D2DA00EF2E1E /* MapView.swift in Sources */,
 				CD07F6D62458AC7100EF2E1E /* AppDelegate.swift in Sources */,
 				CD07F6DB2458AC7100EF2E1E /* BucketList.xcdatamodeld in Sources */,
 				CD07F6DD2458AC7100EF2E1E /* ContentView.swift in Sources */,
