@@ -7,85 +7,55 @@
 //
 
 import SwiftUI
-import LocalAuthentication
-
-
-struct User: Identifiable, Comparable, Codable {
-    let id = UUID()
-    let firstName: String
-    let lastName: String
-    
-    static func < (lhs: User, rhs: User) -> Bool {
-        lhs.lastName < rhs.lastName
-    }
-}
-
-func getDocumentsDirectory() -> URL {
-    // find all possible documents directories for this user
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-    // just send back the first one, which ought to be the only one
-    return paths[0]
-}
-
-enum LoadingState {
-    case loading, success, failed
-}
-
-// View
-struct LoadingView: View {
-    var body: some View {
-        Text("Loading...")
-    }
-}
-
-struct SuccessView: View {
-    var body: some View {
-        Text("Success!")
-    }
-}
-
-struct FailedView: View {
-    var body: some View {
-        Text("Failed.")
-    }
-}
-// views end
+import MapKit
 
 struct ContentView: View {
-   @State private var isUnlocked = false
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    @State private var locations = [MKPointAnnotation]()
+    @State private var selectedPlace: MKPointAnnotation?
+    @State private var showingPlaceDetails = false
+    @State private var showingEditScreen = false
     
     var body: some View {
-       VStack {
-            if self.isUnlocked {
-                Text("Unlocked")
-            } else {
-                Text("Locked")
-            }
-        }
-        .onAppear(perform: auth)
-    }
-    
-    func auth() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "We need to unlock your data."
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                
-                DispatchQueue.main.async {
-                    if success {
-                        // authenticated successfully
-                        self.isUnlocked = true
-                        
-                    } else {
-                        // there was a problem
+       ZStack {
+        MapView(centerCoordinate: $centerCoordinate,selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: self.locations)
+               .edgesIgnoringSafeArea(.all)
+           Circle()
+               .fill(Color.blue)
+               .opacity(0.3)
+               .frame(width: 32, height: 32)
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        let newLocation = MKPointAnnotation()
+                        newLocation.coordinate = self.centerCoordinate
+                        newLocation.title = "Example location"
+                        self.locations.append(newLocation)
+                        self.selectedPlace = newLocation
+                        self.showingEditScreen = true
+                    }) {
+                        Image(systemName: "plus")
                     }
+                    .padding()
+                    .background(Color.black.opacity(0.75))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding(.trailing)
                 }
             }
-        } else {
-            // no biometrics
+        }
+         .alert(isPresented: $showingPlaceDetails) {
+            Alert(title: Text(selectedPlace?.title ?? "Unknown"), message: Text(selectedPlace?.subtitle ?? "Missing place information."), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("Edit")) {
+                    self.showingEditScreen = true
+                } )
+            }
+        .sheet(isPresented: $showingEditScreen) {
+            if self.selectedPlace != nil {
+                EditView(placemark: self.selectedPlace!)
+            }
         }
     }
 }
