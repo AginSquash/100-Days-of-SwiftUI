@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import LocalAuthentication
+
 
 struct User: Identifiable, Comparable, Codable {
     let id = UUID()
@@ -51,17 +53,39 @@ struct FailedView: View {
 // views end
 
 struct ContentView: View {
-    var loadingState = LoadingState.success
+   @State private var isUnlocked = false
     
     var body: some View {
-        Group {
-            if loadingState == .loading {
-                LoadingView()
-            } else if loadingState == .success {
-                SuccessView()
-            } else if loadingState == .failed {
-                FailedView()
+       VStack {
+            if self.isUnlocked {
+                Text("Unlocked")
+            } else {
+                Text("Locked")
             }
+        }
+        .onAppear(perform: auth)
+    }
+    
+    func auth() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "We need to unlock your data."
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                
+                DispatchQueue.main.async {
+                    if success {
+                        // authenticated successfully
+                        self.isUnlocked = true
+                        
+                    } else {
+                        // there was a problem
+                    }
+                }
+            }
+        } else {
+            // no biometrics
         }
     }
 }
