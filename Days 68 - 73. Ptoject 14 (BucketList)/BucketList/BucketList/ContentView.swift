@@ -59,7 +59,9 @@ struct ContentView: View {
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
+    
     @State private var isUnlocked = false
+    @State private var attempts = 0
     
     var body: some View {
         
@@ -67,13 +69,21 @@ struct ContentView: View {
             if isUnlocked {
                 unlockedView(locations: $locations, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, showingEditScreen: $showingEditScreen)
             } else {
-                Button("Unlock Places") {
-                    self.authenticate()
+                VStack {
+                    if self.attempts != 0 {
+                        Text("Wrong! Attemps: \(attempts)")
+                            .foregroundColor(.red)
+                            .padding()
+                            .transition(.opacity)
+                    }
+                    Button("Unlock Places") {
+                        self.authenticate()
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
                 }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
             }
         }
              .onAppear(perform: loadData)
@@ -117,7 +127,9 @@ struct ContentView: View {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        // error
+                        withAnimation() {
+                            self.attempts += 1
+                        }
                     }
                 }
             }
