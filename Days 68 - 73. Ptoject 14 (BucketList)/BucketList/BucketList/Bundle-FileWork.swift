@@ -22,7 +22,7 @@ extension Bundle {
         let url =  path.appendingPathComponent(file)
         
         do {
-            try encoded.write(to: url, options: [.atomic])
+            try encoded.write(to: url, options: [.atomicWrite, .completeFileProtection])
         } catch {
             print(error.localizedDescription)
         }
