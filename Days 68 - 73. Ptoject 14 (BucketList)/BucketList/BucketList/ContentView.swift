@@ -66,30 +66,15 @@ struct ContentView: View {
     }
     
     func loadData() {
-        
-        
-        let filename = getDocumentsDirectory().appendingPathComponent("SavedPlaces.txt")
-
-        do {
-            let data = try Data(contentsOf: filename)
-            let codableLocation = try JSONDecoder().decode([CodableMKPoint].self, from: data)
-            self.locations = CodableMKPointToMKPointAnnotation(points: codableLocation)
-        } catch {
-            print("Unable to load saved data.")
-        }
+        let codableLocation: [CodableMKPoint] = Bundle.main.readCustomData(file: "SavedPlaces") ?? [CodableMKPoint]()
+        self.locations = CodableMKPointToMKPointAnnotation(points: codableLocation)
     }
     
-   func saveData() {
-        do {
-            let filename = getDocumentsDirectory().appendingPathComponent("SavedPlaces.txt")
-            let codableLocation = MKPointAnnotationToCodableMKPoint(points: self.locations)
-            let data = try JSONEncoder().encode(codableLocation)
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-            print("Data saved")
-        } catch {
-            print("Unable to save data.")
-        }
+    func saveData() {
+        let codableLocation = MKPointAnnotationToCodableMKPoint(points: self.locations)
+        Bundle.main.writeCustomData(data: codableLocation, file: "SavedPlaces")
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
