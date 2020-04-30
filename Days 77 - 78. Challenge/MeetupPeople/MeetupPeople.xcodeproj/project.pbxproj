@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD546BBB245B61D700CA8C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BBA245B61D700CA8C3B /* AppDelegate.swift */; };
+		CD546BBD245B61D700CA8C3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BBC245B61D700CA8C3B /* SceneDelegate.swift */; };
+		CD546BC0245B61D700CA8C3B /* MeetupPeople.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD546BBE245B61D700CA8C3B /* MeetupPeople.xcdatamodeld */; };
+		CD546BC2245B61D700CA8C3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BC1245B61D700CA8C3B /* ContentView.swift */; };
+		CD546BC4245B61D800CA8C3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD546BC3245B61D800CA8C3B /* Assets.xcassets */; };
+		CD546BC7245B61D800CA8C3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD546BC6245B61D800CA8C3B /* Preview Assets.xcassets */; };
+		CD546BCA245B61D800CA8C3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD546BC8245B61D800CA8C3B /* LaunchScreen.storyboard */; };
+		CD546BD2245B62DF00CA8C3B /* Bundle-FileWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD1245B62DF00CA8C3B /* Bundle-FileWork.swift */; };
+		CD546BD4245B630E00CA8C3B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD3245B630E00CA8C3B /* ImagePicker.swift */; };
+		CD546BD6245B667100CA8C3B /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD5245B667100CA8C3B /* EditView.swift */; };
+		CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD7245B66F600CA8C3B /* Persons.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD546BB7245B61D700CA8C3B /* MeetupPeople.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupPeople.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD546BBA245B61D700CA8C3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD546BBC245B61D700CA8C3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CD546BBF245B61D700CA8C3B /* MeetupPeople.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetupPeople.xcdatamodel; sourceTree = "<group>"; };
+		CD546BC1245B61D700CA8C3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CD546BC3245B61D800CA8C3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD546BC6245B61D800CA8C3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CD546BC9245B61D800CA8C3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD546BCB245B61D800CA8C3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD546BD1245B62DF00CA8C3B /* Bundle-FileWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-FileWork.swift"; sourceTree = "<group>"; };
+		CD546BD3245B630E00CA8C3B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CD546BD5245B667100CA8C3B /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		CD546BD7245B66F600CA8C3B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD546BB4245B61D700CA8C3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD546BAE245B61D700CA8C3B = {
+			isa = PBXGroup;
+			children = (
+				CD546BB9245B61D700CA8C3B /* MeetupPeople */,
+				CD546BB8245B61D700CA8C3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD546BB8245B61D700CA8C3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD546BB7245B61D700CA8C3B /* MeetupPeople.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD546BB9245B61D700CA8C3B /* MeetupPeople */ = {
+			isa = PBXGroup;
+			children = (
+				CD546BBA245B61D700CA8C3B /* AppDelegate.swift */,
+				CD546BBC245B61D700CA8C3B /* SceneDelegate.swift */,
+				CD546BC1245B61D700CA8C3B /* ContentView.swift */,
+				CD546BD5245B667100CA8C3B /* EditView.swift */,
+				CD546BD7245B66F600CA8C3B /* Persons.swift */,
+				CD546BD1245B62DF00CA8C3B /* Bundle-FileWork.swift */,
+				CD546BD3245B630E00CA8C3B /* ImagePicker.swift */,
+				CD546BC3245B61D800CA8C3B /* Assets.xcassets */,
+				CD546BC8245B61D800CA8C3B /* LaunchScreen.storyboard */,
+				CD546BCB245B61D800CA8C3B /* Info.plist */,
+				CD546BBE245B61D700CA8C3B /* MeetupPeople.xcdatamodeld */,
+				CD546BC5245B61D800CA8C3B /* Preview Content */,
+			);
+			path = MeetupPeople;
+			sourceTree = "<group>";
+		};
+		CD546BC5245B61D800CA8C3B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CD546BC6245B61D800CA8C3B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD546BB6245B61D700CA8C3B /* MeetupPeople */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD546BCE245B61D800CA8C3B /* Build configuration list for PBXNativeTarget "MeetupPeople" */;
+			buildPhases = (
+				CD546BB3245B61D700CA8C3B /* Sources */,
+				CD546BB4245B61D700CA8C3B /* Frameworks */,
+				CD546BB5245B61D700CA8C3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetupPeople;
+			productName = MeetupPeople;
+			productReference = CD546BB7245B61D700CA8C3B /* MeetupPeople.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD546BAF245B61D700CA8C3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Vlad Vrublevsky";
+				TargetAttributes = {
+					CD546BB6245B61D700CA8C3B = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = CD546BB2245B61D700CA8C3B /* Build configuration list for PBXProject "MeetupPeople" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD546BAE245B61D700CA8C3B;
+			productRefGroup = CD546BB8245B61D700CA8C3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD546BB6245B61D700CA8C3B /* MeetupPeople */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD546BB5245B61D700CA8C3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD546BCA245B61D800CA8C3B /* LaunchScreen.storyboard in Resources */,
+				CD546BC7245B61D800CA8C3B /* Preview Assets.xcassets in Resources */,
+				CD546BC4245B61D800CA8C3B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD546BB3245B61D700CA8C3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD546BD2245B62DF00CA8C3B /* Bundle-FileWork.swift in Sources */,
+				CD546BBB245B61D700CA8C3B /* AppDelegate.swift in Sources */,
+				CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */,
+				CD546BBD245B61D700CA8C3B /* SceneDelegate.swift in Sources */,
+				CD546BD4245B630E00CA8C3B /* ImagePicker.swift in Sources */,
+				CD546BD6245B667100CA8C3B /* EditView.swift in Sources */,
+				CD546BC2245B61D700CA8C3B /* ContentView.swift in Sources */,
+				CD546BC0245B61D700CA8C3B /* MeetupPeople.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD546BC8245B61D800CA8C3B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD546BC9245B61D800CA8C3B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD546BCC245B61D800CA8C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD546BCD245B61D800CA8C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD546BCF245B61D800CA8C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeetupPeople/Preview Content\"";
+				DEVELOPMENT_TEAM = Z7788V56C7;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeetupPeople/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladvrublevsky.Accessibility;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD546BD0245B61D800CA8C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeetupPeople/Preview Content\"";
+				DEVELOPMENT_TEAM = Z7788V56C7;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeetupPeople/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladvrublevsky.Accessibility;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD546BB2245B61D700CA8C3B /* Build configuration list for PBXProject "MeetupPeople" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD546BCC245B61D800CA8C3B /* Debug */,
+				CD546BCD245B61D800CA8C3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD546BCE245B61D800CA8C3B /* Build configuration list for PBXNativeTarget "MeetupPeople" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD546BCF245B61D800CA8C3B /* Debug */,
+				CD546BD0245B61D800CA8C3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD546BBE245B61D700CA8C3B /* MeetupPeople.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD546BBF245B61D700CA8C3B /* MeetupPeople.xcdatamodel */,
+			);
+			currentVersion = CD546BBF245B61D700CA8C3B /* MeetupPeople.xcdatamodel */;
+			path = MeetupPeople.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CD546BAF245B61D700CA8C3B /* Project object */;
+}
