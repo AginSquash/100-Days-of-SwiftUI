@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var alertMessage = ""
     @State private var showingAlert = false
     
+    @State private var accessibilityText = Text("")
+    
     static var defaultWakeTime: Date {
         var components = DateComponents()
         components.hour = 7
@@ -55,6 +57,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+        
         NavigationView {
             Form {
                 Section(header:
@@ -69,9 +72,11 @@ struct ContentView: View {
                 .font(.headline))
                 {
 
-                     Stepper(value: $amountSleep, in: 4...12, step: 0.25) {
+                    Stepper(value: $amountSleep, in: 4...12, step: 0.25) {
                         Text("\(amountSleep, specifier: "%g") hours")
                     }
+                    .accessibility(label: Text("\(amountSleep, specifier: "%g") hours"))
+                    
                 }
                 
                 Section(header: Text("Daily coffee intake")
