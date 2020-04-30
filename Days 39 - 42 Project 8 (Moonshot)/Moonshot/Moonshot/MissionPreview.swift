@@ -35,7 +35,8 @@ struct MissionPreview: View {
             }
             .padding()
             .frame(width: 150, height: 250, alignment: .top)
-        }    
+            .accessibility(addTraits: .isButton)
+        }
 }
 
 struct MissionPreview_Previews: PreviewProvider {
