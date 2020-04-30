@@ -9,12 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var persons = personsClass()
-    
+    @State private var persons = [person]() //personsClass()
     @State private var showEdit = false
     
     var body: some View {
-        NavigationView {
+        let personBinding = Binding<[person]>(
+            get: { self.persons },
+            set: {
+                self.persons = $0
+                // save!
+        })
+        
+    return NavigationView {
             List {
                 Text("123")
                 
@@ -28,7 +34,7 @@ struct ContentView: View {
         .navigationBarTitle("MeetupPeople")
         }
         .sheet(isPresented: $showEdit) {
-            EditView(persons: self.persons)
+            EditView(persons: personBinding)
         }
     }
 }

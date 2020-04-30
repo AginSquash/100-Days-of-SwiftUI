@@ -9,8 +9,8 @@
 import Foundation
 import SwiftUI
 
-struct person: Codable {
-    let image: Data
+struct person {
+    let image: Image
     let name: String
 }
 

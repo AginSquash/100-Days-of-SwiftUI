@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct EditView: View {
-    @ObservedObject var persons: personsClass
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var persons: [person]
     
     @State private var name = String()
     @State private var showImagePicker = false
@@ -26,6 +29,7 @@ struct EditView: View {
                 })
         
         return
+            
             NavigationView {
                 Form {
                     Section {
@@ -47,10 +51,13 @@ struct EditView: View {
                         }
                     }
             }
-                .navigationBarTitle("Add new friend", displayMode: .inline)
+            .navigationBarTitle("Add new friend", displayMode: .inline)
             .navigationBarItems(trailing: Button("Save") {
-                    // Save
-            } )
+                    let newFriend = person(image: self.image!, name: self.name)
+                    self.persons.append(newFriend)
+                self.presentationMode.wrappedValue.dismiss()
+                }
+            .disabled( image == nil || name.isEmpty ) )
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: bindedImage)
@@ -61,6 +68,12 @@ struct EditView: View {
 struct EditView_Previews: PreviewProvider {
    
     static var previews: some View {
-        EditView(persons: personsClass())
+        
+        var persons = [person]()
+        let personBinding = Binding<[person]>(
+            get: { persons },
+            set: { persons = $0 })
+        
+        return EditView(persons: personBinding)
     }
 }
