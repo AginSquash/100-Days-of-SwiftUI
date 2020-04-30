@@ -22,8 +22,9 @@ struct ContentView: View {
         
     return NavigationView {
             List {
-                Text("123")
-                
+                ForEach(self.persons) { person in
+                    PersonPreview(person: person)
+                }
             }
             .navigationBarItems(trailing: Button(action:  { self.showEdit = true }) {
                 Image(systemName: "plus")

@@ -9,7 +9,8 @@
 import Foundation
 import SwiftUI
 
-struct person {
+struct person: Identifiable {
+    let id = UUID()
     let image: Image
     let name: String
 }
