@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct EditView: View {
     
@@ -16,10 +17,13 @@ struct EditView: View {
     
     @State private var name = String()
     @State private var showImagePicker = false
+    
     @State private var uiImage: UIImage? = nil
     @State private var image: Image? = nil
-    
     @State private var ratio: CGFloat = 0
+    
+    @State private var placeAnnotation: MKPointAnnotation? = nil
+    let locationFetcher = LocationFetcher()
     
     var body: some View {
         let bindedImage = Binding<UIImage?>(
@@ -35,9 +39,16 @@ struct EditView: View {
             NavigationView {
                 
                 Form {
-                        Section {
+                    Section {
                             TextField("Name", text: self.$name, onCommit: self.save)
+                    }
+
+                    Section {
+                        NavigationLink(destination:  MapView(annotation: placeAnnotation)) {
+                            Text(self.placeAnnotation != nil ? "Check map" : "Updating...")
                         }
+                        .disabled(placeAnnotation == nil)
+                    }
                     
                     Section {
                         if self.image != nil {
@@ -71,19 +82,23 @@ struct EditView: View {
             .navigationBarItems(trailing: Button("Save") {
                     self.save()
                 }
-            .disabled( image == nil || name.isEmpty ) )
+            .disabled( image == nil || name.isEmpty || self.placeAnnotation == nil ) )
         }
+        .onAppear(perform: {
+            self.locationFetcher.start()
+            _ = self.getAnnotation()
+        })
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: bindedImage)
         }
     }
     
     func save() {
-        if (self.image != nil && !self.name.isEmpty) {
+        if (self.image != nil && !self.name.isEmpty && self.placeAnnotation != nil) {
             let date = Date()
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
-            let newFriend = person(image: self.uiImage!, name: self.name, date: formatter.string(from: date))
+            let newFriend = person(image: self.uiImage!, name: self.name, date: formatter.string(from: date), latitude: self.placeAnnotation!.coordinate.latitude, longtitude : self.placeAnnotation!.coordinate.longitude)
             self.persons.append(newFriend)
             self.presentationMode.wrappedValue.dismiss()
         }
@@ -108,6 +123,34 @@ struct EditView: View {
         } else {
             return ( 0, 0 )
         }
+    }
+    
+    func getAnnotation() -> MKPointAnnotation? {
+        
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async() {
+        
+            var time = 0
+            while self.locationFetcher.lastKnownLocation == nil {
+                sleep(1)
+                time += 1
+                if time > 10
+                {
+                    print("Cannot get access to location. Break")
+                    break
+                }
+            }
+            
+            let newAnnotation = MKPointAnnotation()
+            newAnnotation.title = "Place"
+            newAnnotation.coordinate = self.locationFetcher.lastKnownLocation ?? CLLocationCoordinate2D()
+            
+            DispatchQueue.main.async {
+                self.placeAnnotation = newAnnotation
+            }
+            
+        }
+        return self.placeAnnotation
     }
 }
 

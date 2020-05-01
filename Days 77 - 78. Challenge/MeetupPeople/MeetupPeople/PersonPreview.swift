@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PersonPreview: View {
     var person: person
@@ -19,7 +20,7 @@ struct PersonPreview: View {
                 .scaledToFit()
                 .clipShape(Circle().inset(by: 1))
                 .shadow(radius: 5)
-            Text( person.name)
+            Text(person.name)
         }
     }
     
@@ -33,7 +34,8 @@ struct PersonPreview: View {
 
 struct PersonPreview_Previews: PreviewProvider {
     static var previews: some View {
-        PersonPreview(person: person(image: UIImage(named: "3")! , name: "Paul", date: "12 03 2020"))
+        let coordinate = CLLocationCoordinate2DMake(0.0, 0.0)
+        return PersonPreview(person: person(image: UIImage(named: "3")! , name: "Paul", date: "12 03 2020", latitude: coordinate.latitude, longtitude: coordinate.longitude ))
             .previewLayout(.fixed(width: 400, height: 110))
     }
 }
