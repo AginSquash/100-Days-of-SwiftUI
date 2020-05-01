@@ -77,7 +77,7 @@ struct EditView: View {
     
     func save() {
         if (self.image != nil && !self.name.isEmpty) {
-            let newFriend = person(image: self.image!, name: self.name)
+            let newFriend = person(image: self.uiImage!, name: self.name)
             self.persons.append(newFriend)
             self.presentationMode.wrappedValue.dismiss()
         }
@@ -89,6 +89,15 @@ struct EditView: View {
             return ratio * uiImage.size.height
         } else {
             return frameWidth
+        }
+    }
+    
+    func getSizeTuple() -> (CGFloat, CGFloat)
+    {
+        if let uiImage = self.uiImage {
+            return (uiImage.size.width, uiImage.size.height)
+        } else {
+            return ( 0, 0 )
         }
     }
 }

@@ -13,21 +13,27 @@ struct PersonPreview: View {
     
     var body: some View {
         HStack {
-            person.image
+            Image(uiImage: person.image)
                 .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
+                .frame(width: 100, height: self.getHeight(frameWidth: 100))
+                .scaledToFit()
                 .clipShape(Circle().inset(by: 1))
                 .shadow(radius: 5)
-                //.padding()
             Text( person.name)
         }
+    }
+    
+        func getHeight(frameWidth: CGFloat) -> CGFloat {
+
+            let ratio = frameWidth / person.image.size.width
+            return ratio * person.image.size.height
+       
     }
 }
 
 struct PersonPreview_Previews: PreviewProvider {
     static var previews: some View {
-        PersonPreview(person: person(image: Image("2"), name: "Paul"))
+        PersonPreview(person: person(image: UIImage(named: "3")! , name: "Paul"))
             .previewLayout(.fixed(width: 400, height: 110))
     }
 }

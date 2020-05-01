@@ -11,8 +11,9 @@ import SwiftUI
 
 struct person: Identifiable {
     let id = UUID()
-    let image: Image
+    let image: UIImage
     let name: String
+    //let size: (width: CGFloat, height: CGFloat)
 }
 
 class personsClass: ObservableObject {
