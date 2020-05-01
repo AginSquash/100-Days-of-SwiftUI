@@ -32,41 +32,54 @@ struct EditView: View {
             
             NavigationView {
                 GeometryReader { geometry in
+                    
                     VStack {
-                        TextField("Name", text: self.$name)
-                                .padding()
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.secondary)
-                            
+                        Text("Enter name: ")
+                            .padding(.top)
+                        TextField("Name", text: self.$name, onCommit: self.save)
+                            .padding(.leading)
+                            .padding(.top)
+                    
+                        VStack {
                             if self.image != nil {
                                 self.image?
                                     .resizable()
                                     .frame(width: geometry.size.width, height: self.getHeight(frameWidth: geometry.size.width))
-                                    //geometry.size.width / self.uiImage!.size.width * self.uiImage!.size.height
                                     .scaledToFit()
+                                    .clipShape(Rectangle().inset(by: 5))
+                                    .shadow(radius: 5)
                                 
                             } else {
+                                Spacer()
                                     Text("Tap to select a picture")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.blue)
                                     .font(.headline)
+                                    .padding()
+                                Spacer()
                             }
                         }
                         .onTapGesture {
                             self.showImagePicker = true
                         }
+                        Spacer()
                     }
             }
             .navigationBarTitle("Add new friend", displayMode: .inline)
             .navigationBarItems(trailing: Button("Save") {
-                    let newFriend = person(image: self.image!, name: self.name)
-                    self.persons.append(newFriend)
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.save()
                 }
             .disabled( image == nil || name.isEmpty ) )
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: bindedImage)
+        }
+    }
+    
+    func save() {
+        if (self.image != nil && !self.name.isEmpty) {
+            let newFriend = person(image: self.image!, name: self.name)
+            self.persons.append(newFriend)
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
     
