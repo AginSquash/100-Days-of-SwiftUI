@@ -27,8 +27,9 @@ struct ContentView: View {
                         PersonPreview(person: person)
                     }
                 }
+            .onDelete(perform: delete)
             }
-            .navigationBarItems(trailing: Button(action:  { self.showEdit = true }) {
+            .navigationBarItems(leading: EditButton(), trailing: Button(action:  { self.showEdit = true }) {
                 Image(systemName: "plus")
                     .padding()
                     .scaledToFill()
@@ -49,7 +50,11 @@ struct ContentView: View {
     
     func load() {
         let personsLoaded = Bundle.main.readCustomData(file: "persons") ?? [personToSave]()
-        self.persons = convertToPersons(personsSaveble: personsLoaded)
+        self.persons = convertToPersons(personsSaveble: personsLoaded).sorted()
+    }
+    
+    func delete(at index: IndexSet) {
+        self.persons.remove(atOffsets: index)
     }
 }
 

@@ -9,11 +9,15 @@
 import Foundation
 import SwiftUI
 
-struct person: Identifiable {
+struct person: Identifiable, Comparable {
     let id = UUID()
     let image: UIImage
     let name: String
     let date: String
+    
+    static func < (lhd: person, rdh: person) -> Bool {
+        return lhd.name < rdh.name
+    }
 }
 
 struct personToSave: Codable {
