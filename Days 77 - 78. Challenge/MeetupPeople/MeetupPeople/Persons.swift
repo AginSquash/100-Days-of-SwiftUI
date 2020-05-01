@@ -13,7 +13,7 @@ struct person: Identifiable {
     let id = UUID()
     let image: UIImage
     let name: String
-    //let size: (width: CGFloat, height: CGFloat)
+    let date: String
 }
 
 class personsClass: ObservableObject {

@@ -19,6 +19,7 @@
 		CD546BD6245B667100CA8C3B /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD5245B667100CA8C3B /* EditView.swift */; };
 		CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD7245B66F600CA8C3B /* Persons.swift */; };
 		CD546BDA245B907500CA8C3B /* PersonPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD9245B907500CA8C3B /* PersonPreview.swift */; };
+		CDB9E490245C62CF003DFCD5 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB9E48F245C62CF003DFCD5 /* PersonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CD546BD5245B667100CA8C3B /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		CD546BD7245B66F600CA8C3B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
 		CD546BD9245B907500CA8C3B /* PersonPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreview.swift; sourceTree = "<group>"; };
+		CDB9E48F245C62CF003DFCD5 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				CD546BD5245B667100CA8C3B /* EditView.swift */,
 				CD546BD9245B907500CA8C3B /* PersonPreview.swift */,
 				CD546BD7245B66F600CA8C3B /* Persons.swift */,
+				CDB9E48F245C62CF003DFCD5 /* PersonView.swift */,
 				CD546BD1245B62DF00CA8C3B /* Bundle-FileWork.swift */,
 				CD546BD3245B630E00CA8C3B /* ImagePicker.swift */,
 				CD546BC3245B61D800CA8C3B /* Assets.xcassets */,
@@ -169,6 +172,7 @@
 				CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */,
 				CD546BBD245B61D700CA8C3B /* SceneDelegate.swift in Sources */,
 				CD546BD4245B630E00CA8C3B /* ImagePicker.swift in Sources */,
+				CDB9E490245C62CF003DFCD5 /* PersonView.swift in Sources */,
 				CD546BD6245B667100CA8C3B /* EditView.swift in Sources */,
 				CD546BDA245B907500CA8C3B /* PersonPreview.swift in Sources */,
 				CD546BC2245B61D700CA8C3B /* ContentView.swift in Sources */,

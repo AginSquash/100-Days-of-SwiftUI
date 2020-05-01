@@ -16,8 +16,10 @@ struct EditView: View {
     
     @State private var name = String()
     @State private var showImagePicker = false
-    @State private var uiImage: UIImage? = nil
-    @State private var image: Image? =  nil //Image("3")
+    @State private var uiImage: UIImage? = UIImage(named: "3")
+    @State private var image: Image? = Image("3")
+    
+    @State private var ratio: CGFloat = 0
     
     var body: some View {
         let bindedImage = Binding<UIImage?>(
@@ -31,37 +33,38 @@ struct EditView: View {
         return
             
             NavigationView {
-                GeometryReader { geometry in
+                
+                Form {
+                        Section {
+                            TextField("Name", text: self.$name, onCommit: self.save)
+                        }
                     
-                    VStack {
-                        Text("Enter name: ")
-                            .padding(.top)
-                        TextField("Name", text: self.$name, onCommit: self.save)
-                            .padding(.leading)
-                            .padding(.top)
-                    
-                        VStack {
-                            if self.image != nil {
-                                self.image?
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: self.getHeight(frameWidth: geometry.size.width))
-                                    .scaledToFit()
-                                    .clipShape(Rectangle().inset(by: 5))
-                                    .shadow(radius: 5)
+                    Section {
+                        if self.image != nil {
+                            ZStack {
                                 
-                            } else {
-                                Spacer()
-                                    Text("Tap to select a picture")
-                                    .foregroundColor(.blue)
-                                    .font(.headline)
-                                    .padding()
-                                Spacer()
+                                Rectangle()
+                                    .frame(height: uiImage!.size.height * self.ratio + 35)
+                                    .opacity(0)
+                                    
+                                GeometryReader { geometry in
+                                        self.image?
+                                            .resizable()
+                                            .frame(width: geometry.size.width, height: self.getHeight(frameWidth: geometry.size.width))
+                                            .scaledToFit()
+                                            .clipShape(Rectangle().inset(by: 5))
+                                            .shadow(radius: 5)
+                                            .padding(.top)
+                                }
                             }
+                        } else {
+                            Text("Tap to select a picture")
+                            .foregroundColor(.blue)
+                            .font(.headline)
                         }
-                        .onTapGesture {
+                    }
+                    .onTapGesture {
                             self.showImagePicker = true
-                        }
-                        Spacer()
                     }
             }
             .navigationBarTitle("Add new friend", displayMode: .inline)
@@ -77,7 +80,10 @@ struct EditView: View {
     
     func save() {
         if (self.image != nil && !self.name.isEmpty) {
-            let newFriend = person(image: self.uiImage!, name: self.name)
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            let newFriend = person(image: self.uiImage!, name: self.name, date: formatter.string(from: date))
             self.persons.append(newFriend)
             self.presentationMode.wrappedValue.dismiss()
         }
@@ -86,6 +92,9 @@ struct EditView: View {
     func getHeight(frameWidth: CGFloat) -> CGFloat {
         if let uiImage = self.uiImage {
             let ratio = frameWidth / uiImage.size.width
+            DispatchQueue.main.async {
+                self.ratio = ratio
+            }
             return ratio * uiImage.size.height
         } else {
             return frameWidth

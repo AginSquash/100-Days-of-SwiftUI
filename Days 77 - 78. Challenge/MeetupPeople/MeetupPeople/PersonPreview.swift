@@ -33,7 +33,7 @@ struct PersonPreview: View {
 
 struct PersonPreview_Previews: PreviewProvider {
     static var previews: some View {
-        PersonPreview(person: person(image: UIImage(named: "3")! , name: "Paul"))
+        PersonPreview(person: person(image: UIImage(named: "3")! , name: "Paul", date: "12 03 2020"))
             .previewLayout(.fixed(width: 400, height: 110))
     }
 }

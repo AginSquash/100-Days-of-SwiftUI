@@ -23,7 +23,9 @@ struct ContentView: View {
     return NavigationView {
             List {
                 ForEach(self.persons) { person in
-                    PersonPreview(person: person)
+                    NavigationLink(destination: PersonView(person: person)) {
+                        PersonPreview(person: person)
+                    }
                 }
             }
             .navigationBarItems(trailing: Button(action:  { self.showEdit = true }) {
