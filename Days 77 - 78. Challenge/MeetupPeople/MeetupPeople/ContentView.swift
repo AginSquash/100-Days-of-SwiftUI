@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var persons = [person]() //personsClass()
+    @State private var persons = [person]()
     @State private var showEdit = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct ContentView: View {
             get: { self.persons },
             set: {
                 self.persons = $0
-                // save!
+                self.save()
         })
         
     return NavigationView {
@@ -39,6 +39,17 @@ struct ContentView: View {
         .sheet(isPresented: $showEdit) {
             EditView(persons: personBinding)
         }
+        .onAppear(perform: load)
+    }
+    
+    func save() {
+        let personSaveble = convertToSaveble(persons: self.persons)
+        Bundle.main.writeCustomData(data: personSaveble, file: "persons")
+    }
+    
+    func load() {
+        let personsLoaded = Bundle.main.readCustomData(file: "persons") ?? [personToSave]()
+        self.persons = convertToPersons(personsSaveble: personsLoaded)
     }
 }
 

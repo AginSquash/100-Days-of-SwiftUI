@@ -16,8 +16,8 @@ struct EditView: View {
     
     @State private var name = String()
     @State private var showImagePicker = false
-    @State private var uiImage: UIImage? = UIImage(named: "3")
-    @State private var image: Image? = Image("3")
+    @State private var uiImage: UIImage? = nil
+    @State private var image: Image? = nil
     
     @State private var ratio: CGFloat = 0
     

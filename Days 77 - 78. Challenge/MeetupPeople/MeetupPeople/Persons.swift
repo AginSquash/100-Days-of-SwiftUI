@@ -16,6 +16,27 @@ struct person: Identifiable {
     let date: String
 }
 
-class personsClass: ObservableObject {
-    @Published var peopleArray = [person]()
+struct personToSave: Codable {
+    let image: Data
+    let name: String
+    let date: String
+}
+
+func convertToSaveble(persons: [person]) -> [personToSave] {
+    var personsSaveble = [personToSave]()
+    for person in persons {
+        let newSave = personToSave(image: person.image.jpegData(compressionQuality: 0.8)!,
+                                   name: person.name, date: person.date)
+        personsSaveble.append(newSave)
+    }
+    return personsSaveble
+}
+
+func convertToPersons(personsSaveble: [personToSave]) -> [person] {
+    var persons = [person]()
+    for save in personsSaveble {
+        let newPerson = person(image: UIImage(data: save.image)!, name: save.name, date: save.date)
+        persons.append(newPerson)
+    }
+    return persons
 }
