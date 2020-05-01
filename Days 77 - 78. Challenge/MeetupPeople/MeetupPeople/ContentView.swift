@@ -30,7 +30,7 @@ struct ContentView: View {
                 Image(systemName: "plus")
                     .padding()
                     .scaledToFill()
-                .accessibility(label: Text("Add new friend"))
+                    .accessibility(label: Text("Add new friend"))
             })
         .navigationBarTitle("MeetupPeople")
         }

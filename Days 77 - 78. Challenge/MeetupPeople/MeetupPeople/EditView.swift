@@ -17,7 +17,7 @@ struct EditView: View {
     @State private var name = String()
     @State private var showImagePicker = false
     @State private var uiImage: UIImage? = nil
-    @State private var image: Image? = nil
+    @State private var image: Image? =  nil //Image("3")
     
     var body: some View {
         let bindedImage = Binding<UIImage?>(
@@ -31,23 +31,29 @@ struct EditView: View {
         return
             
             NavigationView {
-                Form {
-                    Section {
-                        TextField("Name", text: $name)
-                    }
-                    
-                    Section {
-                        if self.image == nil {
-                            Button("Import photo") {
-                                self.showImagePicker = true
+                GeometryReader { geometry in
+                    VStack {
+                        TextField("Name", text: self.$name)
+                                .padding()
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.secondary)
+                            
+                            if self.image != nil {
+                                self.image?
+                                    .resizable()
+                                    .frame(width: geometry.size.width, height: self.getHeight(frameWidth: geometry.size.width))
+                                    //geometry.size.width / self.uiImage!.size.width * self.uiImage!.size.height
+                                    .scaledToFit()
+                                
+                            } else {
+                                    Text("Tap to select a picture")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
                             }
-                        } else {
-                            image!
-                                .resizable()
-                                .scaledToFit()
-                                .onTapGesture {
-                                    self.showImagePicker = true
-                            }
+                        }
+                        .onTapGesture {
+                            self.showImagePicker = true
                         }
                     }
             }
@@ -55,12 +61,21 @@ struct EditView: View {
             .navigationBarItems(trailing: Button("Save") {
                     let newFriend = person(image: self.image!, name: self.name)
                     self.persons.append(newFriend)
-                self.presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
                 }
             .disabled( image == nil || name.isEmpty ) )
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: bindedImage)
+        }
+    }
+    
+    func getHeight(frameWidth: CGFloat) -> CGFloat {
+        if let uiImage = self.uiImage {
+            let ratio = frameWidth / uiImage.size.width
+            return ratio * uiImage.size.height
+        } else {
+            return frameWidth
         }
     }
 }
