@@ -20,6 +20,7 @@
 		CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD7245B66F600CA8C3B /* Persons.swift */; };
 		CD546BDA245B907500CA8C3B /* PersonPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD546BD9245B907500CA8C3B /* PersonPreview.swift */; };
 		CDB9E490245C62CF003DFCD5 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB9E48F245C62CF003DFCD5 /* PersonView.swift */; };
+		CDB9E492245C8379003DFCD5 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB9E491245C8379003DFCD5 /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CD546BD7245B66F600CA8C3B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
 		CD546BD9245B907500CA8C3B /* PersonPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreview.swift; sourceTree = "<group>"; };
 		CDB9E48F245C62CF003DFCD5 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		CDB9E491245C8379003DFCD5 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				CD546BBA245B61D700CA8C3B /* AppDelegate.swift */,
 				CD546BBC245B61D700CA8C3B /* SceneDelegate.swift */,
 				CD546BC1245B61D700CA8C3B /* ContentView.swift */,
+				CDB9E491245C8379003DFCD5 /* LocationFetcher.swift */,
 				CD546BD5245B667100CA8C3B /* EditView.swift */,
 				CD546BD9245B907500CA8C3B /* PersonPreview.swift */,
 				CD546BD7245B66F600CA8C3B /* Persons.swift */,
@@ -171,6 +174,7 @@
 				CD546BBB245B61D700CA8C3B /* AppDelegate.swift in Sources */,
 				CD546BD8245B66F600CA8C3B /* Persons.swift in Sources */,
 				CD546BBD245B61D700CA8C3B /* SceneDelegate.swift in Sources */,
+				CDB9E492245C8379003DFCD5 /* LocationFetcher.swift in Sources */,
 				CD546BD4245B630E00CA8C3B /* ImagePicker.swift in Sources */,
 				CDB9E490245C62CF003DFCD5 /* PersonView.swift in Sources */,
 				CD546BD6245B667100CA8C3B /* EditView.swift in Sources */,

@@ -17,6 +17,7 @@ struct ContentView: View {
             get: { self.persons },
             set: {
                 self.persons = $0
+                self.persons.sort()
                 self.save()
         })
         
@@ -55,6 +56,7 @@ struct ContentView: View {
     
     func delete(at index: IndexSet) {
         self.persons.remove(atOffsets: index)
+        save()
     }
 }
 
