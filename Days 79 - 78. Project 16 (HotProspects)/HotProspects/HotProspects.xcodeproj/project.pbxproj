@@ -15,6 +15,9 @@
 		CDE6FC0C245D7E9600826983 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE6FC0B245D7E9600826983 /* Preview Assets.xcassets */; };
 		CDE6FC0F245D7E9600826983 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE6FC0D245D7E9600826983 /* LaunchScreen.storyboard */; };
 		CDF59A9C245DBC8F00194118 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = CDF59A9B245DBC8F00194118 /* SamplePackage */; };
+		CDF59A9E245DD93500194118 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF59A9D245DD93500194118 /* ProspectsView.swift */; };
+		CDF59AA0245DD94700194118 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF59A9F245DD94700194118 /* MeView.swift */; };
+		CDF59AA2245DDC5E00194118 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF59AA1245DDC5E00194118 /* Prospect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		CDE6FC0B245D7E9600826983 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDE6FC0E245D7E9600826983 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDE6FC10245D7E9600826983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDF59A9D245DD93500194118 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
+		CDF59A9F245DD94700194118 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		CDF59AA1245DDC5E00194118 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				CDE6FBFF245D7E9400826983 /* AppDelegate.swift */,
 				CDE6FC01245D7E9400826983 /* SceneDelegate.swift */,
 				CDE6FC06245D7E9400826983 /* ContentView.swift */,
+				CDF59A9D245DD93500194118 /* ProspectsView.swift */,
+				CDF59AA1245DDC5E00194118 /* Prospect.swift */,
+				CDF59A9F245DD94700194118 /* MeView.swift */,
 				CDE6FC08245D7E9600826983 /* Assets.xcassets */,
 				CDE6FC0D245D7E9600826983 /* LaunchScreen.storyboard */,
 				CDE6FC10245D7E9600826983 /* Info.plist */,
@@ -157,8 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF59AA0245DD94700194118 /* MeView.swift in Sources */,
 				CDE6FC00245D7E9400826983 /* AppDelegate.swift in Sources */,
 				CDE6FC02245D7E9400826983 /* SceneDelegate.swift in Sources */,
+				CDF59AA2245DDC5E00194118 /* Prospect.swift in Sources */,
+				CDF59A9E245DD93500194118 /* ProspectsView.swift in Sources */,
 				CDE6FC07245D7E9400826983 /* ContentView.swift in Sources */,
 				CDE6FC05245D7E9400826983 /* HotProspects.xcdatamodeld in Sources */,
 			);
