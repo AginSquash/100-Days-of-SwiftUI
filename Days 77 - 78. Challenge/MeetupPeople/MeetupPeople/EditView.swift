@@ -52,8 +52,8 @@ struct EditView: View {
                     
                     Section {
                         if self.image != nil {
+                            
                             ZStack {
-                                
                                 Rectangle()
                                     .frame(height: uiImage!.size.height * self.ratio + 35)
                                     .opacity(0)
@@ -68,6 +68,7 @@ struct EditView: View {
                                             .padding(.top)
                                 }
                             }
+        
                         } else {
                             Text("Tap to select a picture")
                             .foregroundColor(.blue)
