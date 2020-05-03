@@ -51,6 +51,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to scan QR codes.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>We need it to secure access</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
