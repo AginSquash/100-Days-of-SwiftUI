@@ -12,10 +12,6 @@ import CoreImage.CIFilterBuiltins
 struct MeView: View {
     @ObservedObject var meData = MeShared()
     
-    //@State private var name = meData.me.name
-   //@State private var emailAddress = meData.me.emailAddress //"you@yoursite.com"
-    
-    
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     

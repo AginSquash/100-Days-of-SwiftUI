@@ -40,6 +40,8 @@ struct ProspectsView: View {
     }
     
     @State private var isShowingScanner = false
+    @State private var isShowingSortedSheet = false
+    @State private var sortedByDate = false
     
     var body: some View {
         NavigationView {
@@ -67,9 +69,14 @@ struct ProspectsView: View {
                         
                     })
                 }
+            .onDelete(perform: delete)
             }
             .navigationBarTitle(title)
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading:
+                Button(action: { self.isShowingSortedSheet = true },
+                       label: { Text("Sorted by: \(self.sortedByDate ? "Date" : "Name")") })
+            ,
+                trailing: Button(action: {
                 self.isShowingScanner = true
             }, label: {
                 Image(systemName: "qrcode.viewfinder")
@@ -79,8 +86,22 @@ struct ProspectsView: View {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScanner)
                     .edgesIgnoringSafeArea(.bottom)
             }
+            .actionSheet(isPresented: $isShowingSortedSheet) {
+                ActionSheet(title: Text("Choose sorted type"), message: nil, buttons: [
+                    .default(Text("By name"), action: {
+                        self.sortedByDate = false
+                        self.prospects.sortByName() }),
+                    .default(Text("By date"), action: {
+                        self.sortedByDate = true
+                        self.prospects.sortByDate() })
+                ])
+            }
         }
     }
+    
+    func delete(at index: IndexSet) {
+            self.prospects.delete(at: index)
+        }
     
     func handleScanner(result: Result<String, CodeScannerView.ScanError> ) {
         self.isShowingScanner = false
@@ -94,8 +115,15 @@ struct ProspectsView: View {
             let newPerson = Prospect()
             newPerson.name = details[0]
             newPerson.emailAddress = details[1]
+            newPerson.date = Date()
             
             self.prospects.add(newPerson)
+            
+            if self.sortedByDate {
+                self.prospects.sortByDate()
+            } else {
+                self.prospects.sortByName()
+            }
             
         case .failure(let error):
             print(error.localizedDescription)
