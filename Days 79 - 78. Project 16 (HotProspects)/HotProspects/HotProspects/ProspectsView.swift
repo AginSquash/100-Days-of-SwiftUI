@@ -94,7 +94,6 @@ struct ProspectsView: View {
             let newPerson = Prospect()
             newPerson.name = details[0]
             newPerson.emailAddress = details[1]
-            newPerson.date = Date()
             
             self.prospects.add(newPerson)
             

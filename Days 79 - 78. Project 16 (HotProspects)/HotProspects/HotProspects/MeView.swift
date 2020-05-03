@@ -10,8 +10,11 @@ import SwiftUI
 import CoreImage.CIFilterBuiltins
 
 struct MeView: View {
-    @State private var name = "Anonymous"
-    @State private var emailAddress = "you@yoursite.com"
+    @ObservedObject var meData = MeShared()
+    
+    //@State private var name = meData.me.name
+   //@State private var emailAddress = meData.me.emailAddress //"you@yoursite.com"
+    
     
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -19,17 +22,24 @@ struct MeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Name", text: $name)
+                TextField("Name", text: self.$meData.name, onCommit: { self.meData.save() })
                     .textContentType(.name)
                     .font(.title)
                     .padding(.horizontal)
                     
-                TextField("Email address", text: $emailAddress)
-                           .textContentType(.emailAddress)
-                           .font(.title)
-                           .padding([.horizontal, .bottom])
+                TextField("Email address", text: self.$meData.emailAddress, onCommit: { self.meData.save() })
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .font(.title)
+                    .padding(.horizontal)
 
-                Image(uiImage: generateQRCode(from: "\(name)\n\(emailAddress)"))
+                Button(action: { self.meData.save() } ) {
+                    Text("Save")
+                        .font(.title)
+                        .padding(.bottom)
+                }
+                
+                Image(uiImage: generateQRCode(from: "\(self.meData.name)\n\(self.meData.emailAddress)"))
                     .interpolation(.none)
                     .resizable()
                     .scaledToFit()

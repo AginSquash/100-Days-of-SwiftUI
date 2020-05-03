@@ -13,11 +13,12 @@ class Prospect: Identifiable, Codable {
     var name = "Anonymous"
     var emailAddress = ""
     fileprivate(set) var isContacted = false
-    let date: Date
+    let date: Date = Date()
 }
 
 class Prospects: ObservableObject {
     static let saveKey = "SavedData"
+    static let file = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(saveKey)
     
     @Published fileprivate(set) var people: [Prospect]
     
@@ -34,7 +35,7 @@ class Prospects: ObservableObject {
     }
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: Self.saveKey) {
+        if let data = try? Data(contentsOf: Self.file) {
             if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
                 self.people = decoded
                 return
@@ -45,7 +46,11 @@ class Prospects: ObservableObject {
     
     private func save() {
         if let encoded = try? JSONEncoder().encode(self.people) {
-            UserDefaults.standard.set(encoded, forKey: Self.saveKey)
+            do {
+                try encoded.write(to: Self.file)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

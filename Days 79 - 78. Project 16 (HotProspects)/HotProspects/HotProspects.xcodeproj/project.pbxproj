@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CDD30657245ED19100A64B88 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = CDD30656245ED19100A64B88 /* CodeScanner */; };
+		CDD30659245EE84000A64B88 /* MeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD30658245EE84000A64B88 /* MeData.swift */; };
 		CDE6FC00245D7E9400826983 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE6FBFF245D7E9400826983 /* AppDelegate.swift */; };
 		CDE6FC02245D7E9400826983 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE6FC01245D7E9400826983 /* SceneDelegate.swift */; };
 		CDE6FC05245D7E9400826983 /* HotProspects.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDE6FC03245D7E9400826983 /* HotProspects.xcdatamodeld */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CDD30658245EE84000A64B88 /* MeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeData.swift; sourceTree = "<group>"; };
 		CDE6FBFC245D7E9400826983 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE6FBFF245D7E9400826983 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDE6FC01245D7E9400826983 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CDE6FC06245D7E9400826983 /* ContentView.swift */,
 				CDF59A9D245DD93500194118 /* ProspectsView.swift */,
 				CDF59AA1245DDC5E00194118 /* Prospect.swift */,
+				CDD30658245EE84000A64B88 /* MeData.swift */,
 				CDF59A9F245DD94700194118 /* MeView.swift */,
 				CDE6FC08245D7E9600826983 /* Assets.xcassets */,
 				CDE6FC0D245D7E9600826983 /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 				CDF59AA0245DD94700194118 /* MeView.swift in Sources */,
 				CDE6FC00245D7E9400826983 /* AppDelegate.swift in Sources */,
 				CDE6FC02245D7E9400826983 /* SceneDelegate.swift in Sources */,
+				CDD30659245EE84000A64B88 /* MeData.swift in Sources */,
 				CDF59AA2245DDC5E00194118 /* Prospect.swift in Sources */,
 				CDF59A9E245DD93500194118 /* ProspectsView.swift in Sources */,
 				CDE6FC07245D7E9400826983 /* ContentView.swift in Sources */,
