@@ -36,10 +36,12 @@ class Prospects: ObservableObject {
         save()
     }
     
-    func delete(at index: IndexSet){
-        objectWillChange.send()
-        self.people.remove(atOffsets: index)
-        save()
+    func delete(personDelete: Prospect) {
+        if let index = self.people.firstIndex(of: personDelete) {
+            objectWillChange.send()
+            self.people.remove(at: index)
+            save()
+        }
     }
     
     func toggle(_ prospect: Prospect) {
@@ -48,21 +50,10 @@ class Prospects: ObservableObject {
         save()
     }
     
-    func sortByName() {
-        objectWillChange.send()
-        self.people = self.people.sorted()
-    }
-    
-    func sortByDate() {
-        objectWillChange.send()
-        self.people = self.people.sorted(by: { $0.date < $1.date })
-    }
-    
     init() {
         if let data = try? Data(contentsOf: Self.file) {
             if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                self.people = decoded
-                sortByName()
+                self.people = decoded.sorted()
                 return
             }
         }

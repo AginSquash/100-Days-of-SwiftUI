@@ -29,13 +29,21 @@ struct ProspectsView: View {
     
     @EnvironmentObject var prospects: Prospects
     var filteredProspects: [Prospect] {
+        
+        var people: [Prospect]
+        if sortedByDate {
+            people = self.prospects.people.sorted(by: { $0.date < $1.date } )
+        } else {
+            people = self.prospects.people.sorted()
+        }
+        
         switch filter {
         case .none:
-            return self.prospects.people
+            return people
         case .contacted:
-            return self.prospects.people.filter { $0.isContacted }
+            return people.filter { $0.isContacted }
         case .uncontacted:
-            return self.prospects.people.filter { !$0.isContacted }
+            return people.filter { !$0.isContacted }
         }
     }
     
@@ -62,7 +70,7 @@ struct ProspectsView: View {
                         }
                         
                         if !prospect.isContacted {
-                            Button("Remind Me") {
+                            Button("Remind Me at 9 am") {
                                 self.addNotification(for: prospect)
                             }
                         }
@@ -88,20 +96,19 @@ struct ProspectsView: View {
             }
             .actionSheet(isPresented: $isShowingSortedSheet) {
                 ActionSheet(title: Text("Choose sorted type"), message: nil, buttons: [
-                    .default(Text("By name"), action: {
-                        self.sortedByDate = false
-                        self.prospects.sortByName() }),
-                    .default(Text("By date"), action: {
-                        self.sortedByDate = true
-                        self.prospects.sortByDate() })
+                    .default(Text("By name"), action: { self.sortedByDate = false }),
+                    .default(Text("By date"), action: { self.sortedByDate = true })
                 ])
             }
         }
     }
     
-    func delete(at index: IndexSet) {
-            self.prospects.delete(at: index)
+    func delete(at indexSet: IndexSet) {
+        for index in indexSet
+        {
+            self.prospects.delete(personDelete: self.filteredProspects[index] )
         }
+    }
     
     func handleScanner(result: Result<String, CodeScannerView.ScanError> ) {
         self.isShowingScanner = false
@@ -118,12 +125,6 @@ struct ProspectsView: View {
             newPerson.date = Date()
             
             self.prospects.add(newPerson)
-            
-            if self.sortedByDate {
-                self.prospects.sortByDate()
-            } else {
-                self.prospects.sortByName()
-            }
             
         case .failure(let error):
             print(error.localizedDescription)
@@ -142,8 +143,8 @@ struct ProspectsView: View {
             var dateComponents = DateComponents()
             dateComponents.hour = 9
             
-            // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
