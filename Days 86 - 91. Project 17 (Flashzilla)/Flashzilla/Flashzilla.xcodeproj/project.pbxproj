@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD8873F624687EE4000CDF9E /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8873F524687EE4000CDF9E /* EditCards.swift */; };
 		CD8990CB24603140001C3387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8990CA24603140001C3387 /* AppDelegate.swift */; };
 		CD8990CD24603140001C3387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8990CC24603140001C3387 /* SceneDelegate.swift */; };
 		CD8990D024603140001C3387 /* Flashzilla.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD8990CE24603140001C3387 /* Flashzilla.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD8873F524687EE4000CDF9E /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		CD8990C724603140001C3387 /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8990CA24603140001C3387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8990CC24603140001C3387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				CD8990D124603140001C3387 /* ContentView.swift */,
 				CDA571872464476A00172D3D /* Card.swift */,
 				CDA57189246448D600172D3D /* CardView.swift */,
+				CD8873F524687EE4000CDF9E /* EditCards.swift */,
 				CD8990D324603142001C3387 /* Assets.xcassets */,
 				CD8990D824603142001C3387 /* LaunchScreen.storyboard */,
 				CD8990DB24603142001C3387 /* Info.plist */,
@@ -158,6 +161,7 @@
 				CD8990D024603140001C3387 /* Flashzilla.xcdatamodeld in Sources */,
 				CD8990CB24603140001C3387 /* AppDelegate.swift in Sources */,
 				CDA571882464476A00172D3D /* Card.swift in Sources */,
+				CD8873F624687EE4000CDF9E /* EditCards.swift in Sources */,
 				CD8990D224603140001C3387 /* ContentView.swift in Sources */,
 				CDA5718A246448D600172D3D /* CardView.swift in Sources */,
 				CD8990CD24603140001C3387 /* SceneDelegate.swift in Sources */,
