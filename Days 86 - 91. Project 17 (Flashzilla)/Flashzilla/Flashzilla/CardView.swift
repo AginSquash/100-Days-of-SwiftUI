@@ -8,6 +8,24 @@
 
 import SwiftUI
 
+
+struct CustomRoundedRectangle: View {
+    var offset: CGFloat
+    
+    var body: some View {
+        if offset == 0 {
+            return  RoundedRectangle(cornerRadius: 25, style: .continuous).fill(Color.white)
+        }
+        if offset > 0 {
+            return RoundedRectangle(cornerRadius: 25, style: .continuous).fill(Color.green)
+        } else {
+            return RoundedRectangle(cornerRadius: 25, style: .continuous).fill(Color.red)
+        }
+    }
+    
+}
+
+
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
@@ -31,8 +49,7 @@ struct CardView: View {
                     .background(
                         differentiateWithoutColor
                             ? nil
-                            :  RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                .fill(self.offset.width > 0 ? Color.green : Color.red)
+                            : CustomRoundedRectangle(offset: self.offset.width)
                     )
                 
                     VStack {
@@ -82,9 +99,9 @@ struct CardView: View {
             )
             .frame(width: 450, height: 250)
             .onTapGesture {
-                //withOptionalAnimation {
+                withAnimation {
                     self.isShowingAnswer.toggle()
-                //}
+                }
             }
             .animation(.spring())
     }

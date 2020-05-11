@@ -10,22 +10,6 @@ import SwiftUI
 import CoreHaptics
 import Foundation
 
-
-func withOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result {
-    if UIAccessibility.isReduceMotionEnabled {
-        return try body()
-    } else {
-        return try withAnimation(animation, body)
-    }
-}
-
-extension View {
-    func stacked(at position: Int, in total: Int) -> some View {
-        let offset = CGFloat(total - position)
-        return self.offset(CGSize(width: 0, height: offset * 10))
-    }
-}
-
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     
@@ -34,7 +18,10 @@ struct ContentView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var isActive = true
     @State private var showingEditScreen = false
+    @State private var isTimeOver = false
+    @State private var engine: CHHapticEngine?
     
+    @State private var player: CHHapticPatternPlayer?
     var body: some View {
         ZStack {
             Image(decorative: "background")
@@ -127,7 +114,19 @@ struct ContentView: View {
                 }
             }
         }
+        .alert(isPresented: $isTimeOver) {
+            Alert(title: Text("Time is over!"), message: Text("Try again!"), dismissButton: .default(Text("Restart"), action: {
+                    self.resetCards()
+                
+                    var events = [CHHapticEvent]()
+                    let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+                    let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+                    let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+                    events.append(event)
+            }))
+        }
         .onAppear(perform: resetCards)
+        .onAppear(perform: prepareHaptic)
         .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
                 EditCards()
         }
@@ -135,6 +134,10 @@ struct ContentView: View {
             guard self.isActive else { return }
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
+            }
+            if self.timeRemaining == 0 && self.isTimeOver == false {
+                self.isTimeOver = true
+                try? self.player?.start(atTime: 0)
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
@@ -168,6 +171,41 @@ struct ContentView: View {
                 self.cards = decoded
             }
         }
+    }
+    
+    func prepareHaptic() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        self.engine = try? CHHapticEngine()
+        try? self.engine?.start()
+        
+        var events = [CHHapticEvent]()
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.7)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+        
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            self.player = player
+        } catch {
+             print("Failed to play pattern: \(error.localizedDescription).")
+        }
+    }
+}
+
+func withOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result {
+    if UIAccessibility.isReduceMotionEnabled {
+        return try body()
+    } else {
+        return try withAnimation(animation, body)
+    }
+}
+
+extension View {
+    func stacked(at position: Int, in total: Int) -> some View {
+        let offset = CGFloat(total - position)
+        return self.offset(CGSize(width: 0, height: offset * 10))
     }
 }
 

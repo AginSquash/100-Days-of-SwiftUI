@@ -13,7 +13,7 @@ struct EditCards: View {
     @State private var cards = [Card]()
     @State private var newPrompt = ""
     @State private var newAnswer = ""
-
+    
     var body: some View {
         NavigationView {
             List {
