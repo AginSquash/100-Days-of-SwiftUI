@@ -13,6 +13,39 @@ struct CrewMember {
     let astronaut: Astronaut
 }
 
+struct ImageMod: ViewModifier {
+    let minY: CGFloat
+    func body(content: Content) -> some View {
+        let moved = minY
+        print("moved: \(moved)" )
+        
+        //if moved == 0 {
+        //    return content.scaleEffect(1)
+       // }
+        
+        let scale = moved / 88  //- 1
+        if scale > 0.8 {
+            return content.scaleEffect( scale )
+        }
+        else {
+            return content.scaleEffect( 0.8 )
+        }
+        /*if scale < 0.7 {
+            return content.scaleEffect(0.7)
+        }
+        if scale > 1.4 {
+            return content.scaleEffect(1.4)
+        }
+            //if moved < -23 {
+            //    return content.scaleEffect(1.215)
+            //}
+        */
+       // print(moved / -100 + 1 )
+        //return content.scaleEffect(scale )
+        
+    }
+}
+
 struct MissionView: View {
     let mission: Mission
     let astronauts: [CrewMember]
@@ -22,36 +55,45 @@ struct MissionView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
-                VStack {
-                    Image(decorative: self.mission.image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: geometry.size.width * 0.7)
-                    .padding(.top)
-                    
-                    Text("Launch Date: \(self.mission.formattedLaunchDate)")
-                        .font(.headline)
-                    
-                    
-                    Text(self.mission.description)
-                    .padding()
-                    
-                    Spacer(minLength: 15)
-                    
-                    Text("Crew:")
-                        .font(.title)
-                    
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(self.astronauts, id:\.role) { crewMember in
-                                NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, Missions: self.Missions)) {
-                                    AstronautPreview(member: crewMember)
+                    VStack {
+                        
+                        GeometryReader { geo in
+                            Image(decorative: self.mission.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: geometry.size.width * 0.7 )
+                                .position(x: geometry.frame(in: .global).midX, y: geo.frame(in: .local).midY)
+                                .modifier(ImageMod(minY: geo.frame(in: .global).minY))
+                                //.scaleEffect(1.4)
+                                .onTapGesture {
+                                        print(geo.frame(in: .global).minY)
                                 }
-                                .buttonStyle(PlainButtonStyle())
+                        }
+                        
+                        
+                        Text("Launch Date: \(self.mission.formattedLaunchDate)")
+                            .font(.headline)
+                        
+                        Text(self.mission.description)
+                            .padding(.top)
+                            .padding(.horizontal)
+                        
+                        Spacer(minLength: 15)
+                        
+                        Text("Crew:")
+                            .font(.title)
+                        
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(self.astronauts, id:\.role) { crewMember in
+                                    NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, Missions: self.Missions)) {
+                                        AstronautPreview(member: crewMember)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
                             }
                         }
-                    }
-                    Spacer(minLength: 25)
+                        //Spacer(minLength: 25)
                 }
             }
         }
