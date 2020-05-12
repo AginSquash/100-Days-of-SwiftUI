@@ -26,6 +26,7 @@ struct SettingsView: View {
             Form {
                 Section(header: Text("Maximum value on dice").font(.headline)) {
                     TextField("Default: 6", text: maxBinding)
+                        //.keyboardType(.decimalPad)
                 }
                 
                 Section(header: Text("Amount of dices").font(.headline)) {

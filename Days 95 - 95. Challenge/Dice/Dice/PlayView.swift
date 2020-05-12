@@ -92,6 +92,7 @@ struct PlayView: View {
             self.scoreForDices[i] =  score
             totalScore += score
         }
+        self.totalScore = totalScore
         let result = DiceResult(context: moc)
         result.id = UUID()
         result.date = Date()
