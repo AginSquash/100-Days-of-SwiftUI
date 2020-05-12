@@ -51,14 +51,10 @@ struct ScoreView: View {
                 List(diceResult, id: \.self) { result in
                     ScorePreview(score: result.score, maxScore: result.maxScore ,date: result.date)
                 }
-                .navigationBarTitle("Your score history:", displayMode: .inline)
-                .navigationViewStyle(StackNavigationViewStyle())
             }
-        }.onAppear(perform: debug)
-    }
-    
-    func debug() {
-        print(diceResult.count)
+            .navigationBarTitle("Your score history:", displayMode: .inline)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

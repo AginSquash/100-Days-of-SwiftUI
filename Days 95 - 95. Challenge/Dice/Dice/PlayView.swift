@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct PlayView: View {
     @Environment(\.managedObjectContext) var moc
@@ -14,8 +15,21 @@ struct PlayView: View {
     
     @State private var scoreForDices = [Int](repeating: 0, count: 4)
     @State private var droppedScore = 0
+    @State private var totalScore: Int = 0
+    
+    @State private var engine: CHHapticEngine?
+    @State private var player: CHHapticPatternPlayer?
+    
     var body: some View {
         VStack {
+            
+            if user.config.diceCount > 1 {
+                Text("Total: \(totalScore)")
+                    .font(.largeTitle)
+                    .padding(.bottom, 25)
+                    .transition(.opacity)
+            }
+            
             HStack {
                 ForEach(0..<user.config.diceCount) { diceNumber in
                     Text( "\(self.scoreForDices[diceNumber])" )
@@ -39,12 +53,39 @@ struct PlayView: View {
                         .font(.title)
                         .foregroundColor(Color.white)
                 }
+                .padding( user.config.diceCount > 1 ? .top : .bottom, 25)
                 .frame(width: 200, height: 75, alignment: .center)
             } )
+        }.onAppear(perform: prepareHaptic)
+    }
+    
+    func prepareHaptic() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+
+        var events = [CHHapticEvent]()
+        
+        let intesivity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.8)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.6)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intesivity, sharpness], relativeTime: 0)
+        events.append(event)
+        
+        do {
+            self.engine = try CHHapticEngine()
+            try self.engine?.start()
+            let pattern = try CHHapticPattern(events: events, parameterCurves: [])
+            self.player = try self.engine?.makePlayer(with: pattern)
+        } catch {
+            print("\(error.localizedDescription)")
         }
+        
     }
     
     func makeTrow() {
+        if let player = self.player {
+            try? player.start(atTime: 0)
+        }
+        
         var totalScore = 0
         for i in 0..<user.config.diceCount {
             let score = Int.random(in: 1...user.config.maxAmount)
@@ -57,7 +98,6 @@ struct PlayView: View {
         result.score = Int16(totalScore)
         result.maxScore = Int16( user.config.maxAmount * user.config.diceCount )
         try? self.moc.save()
-        print("saved")
     }
 }
 
