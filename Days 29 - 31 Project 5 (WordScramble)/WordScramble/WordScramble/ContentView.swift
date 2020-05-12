@@ -154,11 +154,9 @@ struct OffsetForWord: ViewModifier {
     var fullViewY: CGFloat
     var minY: CGFloat
     func body(content: Content) -> some View {
-        if minY > 620 {
-            return content.offset(x: (minY / fullViewY - 0.77 ) * 1200 , y: 0)
+        if (minY > fullViewY / 100 * 80) {
+            return content.offset(x: (minY / fullViewY - 0.8 ) * 1400 , y: 0)
         }
-        //print("fullViewY: \(fullViewY)")
-        //print(" Y: \(minY)")
         return content.offset(x: 0, y: 0)
     }
 }
