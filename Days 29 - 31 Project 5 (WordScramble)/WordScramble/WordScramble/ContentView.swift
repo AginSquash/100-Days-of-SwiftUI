@@ -117,6 +117,7 @@ struct ContentView: View {
                             GeometryReader { geo in
                                 HStack {
                                     Image(systemName: "\(word.count).circle")
+                                        .modifier(imageColor(fullViewY: fullView.frame(in: .global).maxY, minY: geo.frame(in: .global).minY))
                                     Text("\(word)")
                                     Spacer()
                                 }
@@ -147,6 +148,18 @@ struct ContentView: View {
             }
         
         }
+    }
+}
+
+struct imageColor: ViewModifier {
+    var fullViewY: CGFloat
+    var minY: CGFloat
+    
+    func body(content: Content) -> some View {
+        if (minY > fullViewY / 100 * 80) {
+            return content.foregroundColor(Color(red: Double( (minY / fullViewY)), green: Double( (minY / fullViewY) - 0.8) * 5 , blue: Double( 1 - (minY / fullViewY) - 0.8) * 7 ))
+        }
+        return content.foregroundColor(Color(red: 0.9, green: 0.1 , blue: 0))
     }
 }
 
