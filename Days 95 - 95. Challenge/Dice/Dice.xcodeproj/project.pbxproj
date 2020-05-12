@@ -17,6 +17,7 @@
 		CDDDBE88246AD74B00D8BADC /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDBE87246AD74B00D8BADC /* PlayView.swift */; };
 		CDDDBE8A246AD85400D8BADC /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDBE89246AD85400D8BADC /* ScoreView.swift */; };
 		CDDDBE8C246AD85F00D8BADC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDBE8B246AD85F00D8BADC /* SettingsView.swift */; };
+		CDDDBE8E246AF78B00D8BADC /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDBE8D246AF78B00D8BADC /* UserConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CDDDBE87246AD74B00D8BADC /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		CDDDBE89246AD85400D8BADC /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		CDDDBE8B246AD85F00D8BADC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CDDDBE8D246AF78B00D8BADC /* UserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				CDDDBE77246AD5DE00D8BADC /* ContentView.swift */,
 				CDDDBE89246AD85400D8BADC /* ScoreView.swift */,
 				CDDDBE8B246AD85F00D8BADC /* SettingsView.swift */,
+				CDDDBE8D246AF78B00D8BADC /* UserConfig.swift */,
 				CDDDBE87246AD74B00D8BADC /* PlayView.swift */,
 				CDDDBE79246AD5E000D8BADC /* Assets.xcassets */,
 				CDDDBE7E246AD5E000D8BADC /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDDBE8E246AF78B00D8BADC /* UserConfig.swift in Sources */,
 				CDDDBE8C246AD85F00D8BADC /* SettingsView.swift in Sources */,
 				CDDDBE71246AD5DE00D8BADC /* AppDelegate.swift in Sources */,
 				CDDDBE73246AD5DE00D8BADC /* SceneDelegate.swift in Sources */,

@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ScorePreview: View {
     var score: Int16 = 6
+    var maxScore: Int16 = 6
     var date: Date? = Date()
     
     var body: some View
@@ -22,6 +23,9 @@ struct ScorePreview: View {
             VStack(alignment: .leading) {
                 Text("Score: \(score)")
                     .font(.title)
+                + Text(" of \(maxScore)")
+                    .font(.title)
+                    .foregroundColor(.secondary)
                 Text(wrappedDate)
                     .foregroundColor(.secondary)
             }
@@ -39,13 +43,13 @@ struct ScorePreview: View {
 
 struct ScoreView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: DiceResult.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)]) var diceResult: FetchedResults<DiceResult>
+    @FetchRequest(entity: DiceResult.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) var diceResult: FetchedResults<DiceResult>
     
     var body: some View {
         NavigationView {
             VStack {
                 List(diceResult, id: \.self) { result in
-                    ScorePreview(score: result.score, date: result.date)
+                    ScorePreview(score: result.score, maxScore: result.maxScore ,date: result.date)
                 }
                 .navigationBarTitle("Your score history:", displayMode: .inline)
                 .navigationViewStyle(StackNavigationViewStyle())

@@ -9,9 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var user: User
     var body: some View {
         TabView {
             PlayView()
+            .environmentObject(user)
                 .tag(0)
                 .tabItem({
                     Image(systemName: "gamecontroller")
@@ -24,6 +26,7 @@ struct ContentView: View {
                     Text("Score")
                 })
             SettingsView()
+                .environmentObject(user)
                 .tag(2)
                 .tabItem({
                     Image(systemName: "gear")
