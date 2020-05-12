@@ -64,6 +64,7 @@ struct PlayView: View {
 struct PlayView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        return PlayView().environment(\.managedObjectContext, context)
+        let user = User()
+        return PlayView().environment(\.managedObjectContext, context).environmentObject(user)
     }
 }
