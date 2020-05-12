@@ -10,18 +10,22 @@ import SwiftUI
 
 struct PlayView: View {
     @Environment(\.managedObjectContext) var moc
-    
+    @State private var scoreForDices = [Int](repeating: 0, count: 4)
+    @State private var totalDice = 4
     @State private var droppedScore = 0
     var body: some View {
         VStack {
-            Text( "\(droppedScore)" )
-                .font(.largeTitle)
-                .padding()
-                .border(Color.red, width: 5)
-                .padding(5)
-                .border(Color.black, width: 5)
-                .padding()
-            
+            HStack {
+                ForEach(0..<totalDice) { diceNumber in
+                    Text( "\(self.scoreForDices[diceNumber])" )
+                        .font(.largeTitle)
+                        .padding()
+                        .border(Color.red, width: 5)
+                        .padding(5)
+                        .border(Color.black, width: 5)
+                        .padding()
+                }
+            }
             Button(action: { self.makeTrow() }, label: {
                 ZStack {
                     Capsule()
@@ -40,11 +44,16 @@ struct PlayView: View {
     }
     
     func makeTrow() {
-        self.droppedScore = Int.random(in: 1...6)
+        var totalScore = 0
+        for i in 0..<totalDice {
+            let score = Int.random(in: 1...6)
+            self.scoreForDices[i] = score
+            totalScore += score
+        }
         let result = DiceResult(context: moc)
         result.id = UUID()
         result.date = Date()
-        result.score = Int16(self.droppedScore)
+        result.score = Int16(totalScore)
         try? self.moc.save()
         print("saved")
     }
