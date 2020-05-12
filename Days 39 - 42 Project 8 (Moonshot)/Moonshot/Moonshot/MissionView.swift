@@ -17,32 +17,21 @@ struct ImageMod: ViewModifier {
     let minY: CGFloat
     func body(content: Content) -> some View {
         let moved = minY
-        print("moved: \(moved)" )
+        if moved == 88 {
+            return content.scaleEffect( 1 ).animation(.none)
+        }
         
-        //if moved == 0 {
-        //    return content.scaleEffect(1)
-       // }
+        if moved > 110 {
+            return content.scaleEffect( 1.25 ).animation(.default)
+        }
         
-        let scale = moved / 88  //- 1
-        if scale > 0.8 {
-            return content.scaleEffect( scale )
+        if moved > 66
+        {
+            let scale = moved / 88
+            return content.scaleEffect( scale ).animation(.default)
+        } else {
+            return content.scaleEffect( 0.75 ).animation(.default)
         }
-        else {
-            return content.scaleEffect( 0.8 )
-        }
-        /*if scale < 0.7 {
-            return content.scaleEffect(0.7)
-        }
-        if scale > 1.4 {
-            return content.scaleEffect(1.4)
-        }
-            //if moved < -23 {
-            //    return content.scaleEffect(1.215)
-            //}
-        */
-       // print(moved / -100 + 1 )
-        //return content.scaleEffect(scale )
-        
     }
 }
 
@@ -64,7 +53,6 @@ struct MissionView: View {
                                 .frame(width: geometry.size.width * 0.7 )
                                 .position(x: geometry.frame(in: .global).midX, y: geo.frame(in: .local).midY)
                                 .modifier(ImageMod(minY: geo.frame(in: .global).minY))
-                                //.scaleEffect(1.4)
                                 .onTapGesture {
                                         print(geo.frame(in: .global).minY)
                                 }
