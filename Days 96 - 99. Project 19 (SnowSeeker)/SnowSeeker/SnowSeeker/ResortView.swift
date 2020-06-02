@@ -26,6 +26,7 @@ struct ResortView: View {
                     Spacer()
                     Text("© " + resort.imageCredit)
                         .foregroundColor(.secondary)
+                        .padding(.top, 5)
                     Spacer()
                 }
 
