@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD6228262486D63100206458 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6228252486D63100206458 /* Facility.swift */; };
+		CD6228282486FD8500206458 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6228272486FD8500206458 /* Favorites.swift */; };
 		CDD4CE00246DD9C90076A212 /* resorts.json in Resources */ = {isa = PBXBuildFile; fileRef = CDD4CDFF246DD9C90076A212 /* resorts.json */; };
 		CDD4CE02246DDC980076A212 /* Resort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4CE01246DDC980076A212 /* Resort.swift */; };
 		CDD4CE04246DDD620076A212 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4CE03246DDD620076A212 /* Bundle-Decodable.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD6228252486D63100206458 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		CD6228272486FD8500206458 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		CDD4CDFF246DD9C90076A212 /* resorts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = resorts.json; sourceTree = "<group>"; };
 		CDD4CE01246DDC980076A212 /* Resort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resort.swift; sourceTree = "<group>"; };
 		CDD4CE03246DDD620076A212 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				CDDDBEA1246B23B800D8BADC /* Assets.xcassets */,
 				CDD4CE01246DDC980076A212 /* Resort.swift */,
 				CDDF95D3246EB09900569377 /* ResortView.swift */,
+				CD6228272486FD8500206458 /* Favorites.swift */,
+				CD6228252486D63100206458 /* Facility.swift */,
 				CDD4CE03246DDD620076A212 /* Bundle-Decodable.swift */,
 				CDDDBEA6246B23B800D8BADC /* LaunchScreen.storyboard */,
 				CDDDBEA9246B23B800D8BADC /* Info.plist */,
@@ -170,8 +176,10 @@
 			files = (
 				CDDDBE9C246B23B600D8BADC /* AppDelegate.swift in Sources */,
 				CDDF95D2246EAED400569377 /* WelcomeView.swift in Sources */,
+				CD6228262486D63100206458 /* Facility.swift in Sources */,
 				CDDDBE9E246B23B600D8BADC /* SceneDelegate.swift in Sources */,
 				CDDF95D4246EB09900569377 /* ResortView.swift in Sources */,
+				CD6228282486FD8500206458 /* Favorites.swift in Sources */,
 				CDD4CE04246DDD620076A212 /* Bundle-Decodable.swift in Sources */,
 				CDD4CE02246DDC980076A212 /* Resort.swift in Sources */,
 				CDDF95D8246ED20A00569377 /* ResortDetailsView.swift in Sources */,
