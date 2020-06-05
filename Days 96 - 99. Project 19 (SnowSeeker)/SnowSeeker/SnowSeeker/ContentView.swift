@@ -25,32 +25,38 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
-                NavigationLink(destination: ResortView(resort: resort)) {
-                    Image(resort.country)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 25)
-                        .clipShape(
-                            RoundedRectangle(cornerRadius: 5)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.black, lineWidth: 1)
-                        )
+            List {
+                NavigationLink(destination: Text("Sort and Filtring"), label: {
+                    Text("Sort and Filtring")
+                })
+                Spacer()
+                ForEach(resorts) { resort in
+                    NavigationLink(destination: ResortView(resort: resort)) {
+                        Image(resort.country)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 25)
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 5)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
 
-                    VStack(alignment: .leading) {
-                        Text(resort.name)
-                            .font(.headline)
-                        Text("\(resort.runs) runs")
-                            .foregroundColor(.secondary)
-                    }.layoutPriority(1)
-                    
-                    if self.favorites.contains(resort) {
-                        Spacer()
-                        Image(systemName: "heart.fill")
-                        .accessibility(label: Text("This is a favorite resort"))
-                            .foregroundColor(.red)
+                        VStack(alignment: .leading) {
+                            Text(resort.name)
+                                .font(.headline)
+                            Text("\(resort.runs) runs")
+                                .foregroundColor(.secondary)
+                        }.layoutPriority(1)
+                        
+                        if self.favorites.contains(resort) {
+                            Spacer()
+                            Image(systemName: "heart.fill")
+                            .accessibility(label: Text("This is a favorite resort"))
+                                .foregroundColor(.red)
+                        }
                     }
                 }
             }
